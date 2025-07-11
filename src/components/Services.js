@@ -1,15 +1,6 @@
 'use client';
 
 import { Box, Typography, Grid, Card, CardContent, Container, Chip, Button } from "@mui/material";
-// import { 
-//   SupportAgent, 
-//   TipsAndUpdates, 
-//   Cloud, 
-//   WorkspacePremium,
-//   ArrowForward,
-//   CheckCircle,
-//   Star
-// } from "@mui/icons-material";
 import { 
   SupportAgent, 
   Star,
@@ -23,44 +14,6 @@ import {
   ArrowForward,
 } from "@mui/icons-material";
 
-// const services = [
-//   {
-//     title: "24/7 IT Support",
-//     icon: <SupportAgent fontSize="large" />,
-//     desc: "Round-the-clock technical support to keep your business running smoothly with zero downtime.",
-//     features: ["24/7 Monitoring", "Rapid Response", "Remote Support", "Proactive Maintenance"],
-//     color: "#3b82f6",
-//     bgGradient: "linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.05) 100%)",
-//     popular: false
-//   },
-//   {
-//     title: "Azure Cloud Solutions",
-//     icon: <Cloud fontSize="large" />,
-//     desc: "Complete cloud transformation with Microsoft Azure expertise and certified professionals.",
-//     features: ["Cloud Migration", "Azure Management", "Security & Compliance", "Cost Optimization"],
-//     color: "#0078d4",
-//     bgGradient: "linear-gradient(135deg, rgba(0, 120, 212, 0.15) 0%, rgba(0, 120, 212, 0.05) 100%)",
-//     popular: true
-//   },
-//   {
-//     title: "Strategic IT Consulting",
-//     icon: <TipsAndUpdates fontSize="large" />,
-//     desc: "Expert strategic guidance to optimize your IT infrastructure and accelerate business growth.",
-//     features: ["Strategic Planning", "Digital Transformation", "Risk Assessment", "Technology Roadmap"],
-//     color: "#10b981",
-//     bgGradient: "linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%)",
-//     popular: false
-//   },
-//   {
-//     title: "Premium Support",
-//     icon: <WorkspacePremium fontSize="large" />,
-//     desc: "VIP-level support with dedicated account managers and priority access to our expert team.",
-//     features: ["Dedicated Manager", "Priority Support", "Custom Solutions", "SLA Guarantee"],
-//     color: "#8b5cf6",
-//     bgGradient: "linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(139, 92, 246, 0.05) 100%)",
-//     popular: false
-//   },
-// ];
 
 const services = [
   {
@@ -346,7 +299,7 @@ export default function Services() {
                   </Typography>
 
                   {/* Features */}
-                  <Box sx={{ mb: 4 }}>
+                  <Box >
                     {service.features.map((feature, index) => (
                       <Box 
                         key={index}
@@ -377,7 +330,7 @@ export default function Services() {
                   </Box>
 
                   {/* CTA Button */}
-                  <Button
+                  {/* <Button
                     className="service-button"
                     variant="contained"
                     endIcon={<ArrowForward className="service-arrow" />}
@@ -401,7 +354,7 @@ export default function Services() {
                     }}
                   >
                     Learn More
-                  </Button>
+                  </Button> */}
                 </CardContent>
               </Card>
             </Grid>

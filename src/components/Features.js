@@ -9,58 +9,6 @@ import {
   Verified, SupportAgent, Cloud
 } from "@mui/icons-material";
 
-// const features = [
-//   {
-//     icon: <Verified />,
-//     title: "Certified Professionals",
-//     description: "Microsoft certified experts with 10+ years of experience in enterprise IT solutions",
-//     color: "#3b82f6"
-//   },
-//   {
-//     icon: <People />,
-//     title: "Client-First Approach",
-//     description: "Tailored solutions designed specifically for your business needs and growth objectives",
-//     color: "#10b981"
-//   },
-//   {
-//     icon: <Speed />,
-//     title: "Proactive Monitoring",
-//     description: "24/7 system monitoring with rapid response to prevent issues before they impact your business",
-//     color: "#f59e0b"
-//   },
-//   // {
-//   //   icon: <IntegrationInstructions />,
-//   //   title: "Seamless Integration",
-//   //   description: "Perfect alignment with your business goals and existing infrastructure for maximum efficiency",
-//   //   color: "#8b5cf6"
-//   // },
-//   // {
-//   //   icon: <Security />,
-//   //   title: "Enterprise Security",
-//   //   description: "Advanced security protocols and compliance standards to protect your critical business data",
-//   //   color: "#ef4444"
-//   // },
-//   // {
-//   //   icon: <Support />,
-//   //   title: "Premium Support",
-//   //   description: "Dedicated account managers and priority support channels for immediate assistance",
-//   //   color: "#0078d4"
-//   // },
-//   // {
-//   //   icon: <TrendingUp />,
-//   //   title: "Growth Focused",
-//   //   description: "Scalable solutions that grow with your business and adapt to changing market demands",
-//   //   color: "#06b6d4"
-//   // },
-//   // {
-//   //   icon: <CheckCircle />,
-//   //   title: "Proven Results",
-//   //   description: "Track record of successful implementations with 99.9% uptime and satisfied clients",
-//   //   color: "#84cc16"
-//   // }
-// ];
-
-import {  } from "@mui/icons-material";
 
 const features = [
   {
