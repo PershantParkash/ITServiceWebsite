@@ -1,53 +1,152 @@
 'use client';
 
 import { Box, Typography, Grid, Card, CardContent, Container, Chip, Button } from "@mui/material";
+// import { 
+//   SupportAgent, 
+//   TipsAndUpdates, 
+//   Cloud, 
+//   WorkspacePremium,
+//   ArrowForward,
+//   CheckCircle,
+//   Star
+// } from "@mui/icons-material";
 import { 
   SupportAgent, 
-  TipsAndUpdates, 
+  Star,
   Cloud, 
-  WorkspacePremium,
-  ArrowForward,
+  Security, 
+  Devices, 
+  MailOutline,
+  Wifi,
+  Apple,
   CheckCircle,
-  Star
+  ArrowForward,
 } from "@mui/icons-material";
+
+// const services = [
+//   {
+//     title: "24/7 IT Support",
+//     icon: <SupportAgent fontSize="large" />,
+//     desc: "Round-the-clock technical support to keep your business running smoothly with zero downtime.",
+//     features: ["24/7 Monitoring", "Rapid Response", "Remote Support", "Proactive Maintenance"],
+//     color: "#3b82f6",
+//     bgGradient: "linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.05) 100%)",
+//     popular: false
+//   },
+//   {
+//     title: "Azure Cloud Solutions",
+//     icon: <Cloud fontSize="large" />,
+//     desc: "Complete cloud transformation with Microsoft Azure expertise and certified professionals.",
+//     features: ["Cloud Migration", "Azure Management", "Security & Compliance", "Cost Optimization"],
+//     color: "#0078d4",
+//     bgGradient: "linear-gradient(135deg, rgba(0, 120, 212, 0.15) 0%, rgba(0, 120, 212, 0.05) 100%)",
+//     popular: true
+//   },
+//   {
+//     title: "Strategic IT Consulting",
+//     icon: <TipsAndUpdates fontSize="large" />,
+//     desc: "Expert strategic guidance to optimize your IT infrastructure and accelerate business growth.",
+//     features: ["Strategic Planning", "Digital Transformation", "Risk Assessment", "Technology Roadmap"],
+//     color: "#10b981",
+//     bgGradient: "linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%)",
+//     popular: false
+//   },
+//   {
+//     title: "Premium Support",
+//     icon: <WorkspacePremium fontSize="large" />,
+//     desc: "VIP-level support with dedicated account managers and priority access to our expert team.",
+//     features: ["Dedicated Manager", "Priority Support", "Custom Solutions", "SLA Guarantee"],
+//     color: "#8b5cf6",
+//     bgGradient: "linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(139, 92, 246, 0.05) 100%)",
+//     popular: false
+//   },
+// ];
 
 const services = [
   {
-    title: "24/7 IT Support",
-    icon: <SupportAgent fontSize="large" />,
-    desc: "Round-the-clock technical support to keep your business running smoothly with zero downtime.",
-    features: ["24/7 Monitoring", "Rapid Response", "Remote Support", "Proactive Maintenance"],
+    title: "User & Device Support",
+    icon: <Devices fontSize="large" />,
+    desc: "Troubleshooting, optimization, and setup for Windows, macOS, printers, and peripherals.",
+    features: [
+      "PC & Mac Optimization", 
+      "Device Setup", 
+      "Printer & Scanner Help", 
+      "User Onboarding"
+    ],
     color: "#3b82f6",
     bgGradient: "linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(59, 130, 246, 0.05) 100%)",
-    popular: false
-  },
-  {
-    title: "Azure Cloud Solutions",
-    icon: <Cloud fontSize="large" />,
-    desc: "Complete cloud transformation with Microsoft Azure expertise and certified professionals.",
-    features: ["Cloud Migration", "Azure Management", "Security & Compliance", "Cost Optimization"],
-    color: "#0078d4",
-    bgGradient: "linear-gradient(135deg, rgba(0, 120, 212, 0.15) 0%, rgba(0, 120, 212, 0.05) 100%)",
     popular: true
   },
   {
-    title: "Strategic IT Consulting",
-    icon: <TipsAndUpdates fontSize="large" />,
-    desc: "Expert strategic guidance to optimize your IT infrastructure and accelerate business growth.",
-    features: ["Strategic Planning", "Digital Transformation", "Risk Assessment", "Technology Roadmap"],
+    title: "Office 365 & Email Support",
+    icon: <MailOutline fontSize="large" />,
+    desc: "Reliable setup, migration, and issue resolution for Outlook, OneDrive, and SharePoint.",
+    features: [
+      "Outlook Troubleshooting", 
+      "Email Migration", 
+      "License Issues", 
+      "Domain & DNS Help"
+    ],
+    color: "#0ea5e9",
+    bgGradient: "linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(14, 165, 233, 0.05) 100%)",
+    popular: false
+  },
+  {
+    title: "Network & Remote Access",
+    icon: <Wifi fontSize="large" />,
+    desc: "Get secure and stable access through VPNs, Wi-Fi setup, and remote desktop support.",
+    features: [
+      "Wi-Fi Troubleshooting", 
+      "VPN Setup", 
+      "Remote Desktop Fixes", 
+      "Router & Firewall Help"
+    ],
     color: "#10b981",
     bgGradient: "linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%)",
     popular: false
   },
   {
-    title: "Premium Support",
-    icon: <WorkspacePremium fontSize="large" />,
-    desc: "VIP-level support with dedicated account managers and priority access to our expert team.",
-    features: ["Dedicated Manager", "Priority Support", "Custom Solutions", "SLA Guarantee"],
+    title: "Apple Device Management (JAMF)",
+    icon: <Apple fontSize="large" />,
+    desc: "Manage, monitor, and control Macs and Apple devices with JAMF administration.",
+    features: [
+      "Mac Enrollment", 
+      "Remote Lock & Wipe", 
+      "App Installation", 
+      "Device Grouping"
+    ],
     color: "#8b5cf6",
     bgGradient: "linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(139, 92, 246, 0.05) 100%)",
     popular: false
   },
+  {
+    title: "Cybersecurity & Compliance",
+    icon: <Security fontSize="large" />,
+    desc: "Protect your business with antivirus setup, access control, and security audits.",
+    features: [
+      "Security Audits", 
+      "Antivirus Setup", 
+      "BitLocker/FileVault", 
+      "GDPR Guidance"
+    ],
+    color: "#f59e0b",
+    bgGradient: "linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.05) 100%)",
+    popular: false
+  },
+  // {
+  //   title: "Weekend Emergency Support",
+  //   icon: <SupportAgent fontSize="large" />,
+  //   desc: "Emergency response every Sunday for critical IT issues — remote or on-site.",
+  //   features: [
+  //     "Sunday Availability", 
+  //     "1-Hour Response*", 
+  //     "System Crash Fix", 
+  //     "Remote or On-Site Help"
+  //   ],
+  //   color: "#ef4444",
+  //   bgGradient: "linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.05) 100%)",
+  //   popular: true
+  // }
 ];
 
 export default function Services() {
@@ -104,7 +203,7 @@ export default function Services() {
               backgroundClip: 'text',
             }}
           >
-            Enterprise-Grade IT Solutions
+            Our Premium IT Services
           </Typography>
           
           <Typography 
@@ -118,8 +217,7 @@ export default function Services() {
               fontSize: { xs: '1.1rem', md: '1.25rem' }
             }}
           >
-            Comprehensive IT services designed to transform your business operations, 
-            boost productivity, and drive sustainable growth.
+            Advanced, business-critical solutions designed for professionals and organizations that demand top-tier support, security, and performance — even on weekends.
           </Typography>
         </Box>
 

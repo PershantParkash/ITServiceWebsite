@@ -6,61 +6,99 @@ import {
   Security, 
   Speed, 
   People,
-  TrendingUp,
-  Support,
-  IntegrationInstructions,
-  Verified
+  Verified, SupportAgent, Cloud
 } from "@mui/icons-material";
+
+// const features = [
+//   {
+//     icon: <Verified />,
+//     title: "Certified Professionals",
+//     description: "Microsoft certified experts with 10+ years of experience in enterprise IT solutions",
+//     color: "#3b82f6"
+//   },
+//   {
+//     icon: <People />,
+//     title: "Client-First Approach",
+//     description: "Tailored solutions designed specifically for your business needs and growth objectives",
+//     color: "#10b981"
+//   },
+//   {
+//     icon: <Speed />,
+//     title: "Proactive Monitoring",
+//     description: "24/7 system monitoring with rapid response to prevent issues before they impact your business",
+//     color: "#f59e0b"
+//   },
+//   // {
+//   //   icon: <IntegrationInstructions />,
+//   //   title: "Seamless Integration",
+//   //   description: "Perfect alignment with your business goals and existing infrastructure for maximum efficiency",
+//   //   color: "#8b5cf6"
+//   // },
+//   // {
+//   //   icon: <Security />,
+//   //   title: "Enterprise Security",
+//   //   description: "Advanced security protocols and compliance standards to protect your critical business data",
+//   //   color: "#ef4444"
+//   // },
+//   // {
+//   //   icon: <Support />,
+//   //   title: "Premium Support",
+//   //   description: "Dedicated account managers and priority support channels for immediate assistance",
+//   //   color: "#0078d4"
+//   // },
+//   // {
+//   //   icon: <TrendingUp />,
+//   //   title: "Growth Focused",
+//   //   description: "Scalable solutions that grow with your business and adapt to changing market demands",
+//   //   color: "#06b6d4"
+//   // },
+//   // {
+//   //   icon: <CheckCircle />,
+//   //   title: "Proven Results",
+//   //   description: "Track record of successful implementations with 99.9% uptime and satisfied clients",
+//   //   color: "#84cc16"
+//   // }
+// ];
+
+import {  } from "@mui/icons-material";
 
 const features = [
   {
     icon: <Verified />,
-    title: "Certified Professionals",
-    description: "Microsoft certified experts with 10+ years of experience in enterprise IT solutions",
+    title: "Azure & Microsoft Certified",
+    description: "Our team holds Microsoft and Azure certifications to ensure reliable, expert-level support every time.",
     color: "#3b82f6"
+  },
+  {
+    icon: <SupportAgent />,
+    title: "Weekend Availability",
+    description: "Get professional IT help even on Sundays — perfect for urgent fixes or weekend planning.",
+    color: "#ef4444"
   },
   {
     icon: <People />,
     title: "Client-First Approach",
-    description: "Tailored solutions designed specifically for your business needs and growth objectives",
+    description: "We design IT solutions around your unique business goals, no matter the size of your team.",
     color: "#10b981"
   },
   {
     icon: <Speed />,
     title: "Proactive Monitoring",
-    description: "24/7 system monitoring with rapid response to prevent issues before they impact your business",
+    description: "Continuous system monitoring to prevent downtime and resolve issues before they escalate.",
     color: "#f59e0b"
   },
-  // {
-  //   icon: <IntegrationInstructions />,
-  //   title: "Seamless Integration",
-  //   description: "Perfect alignment with your business goals and existing infrastructure for maximum efficiency",
-  //   color: "#8b5cf6"
-  // },
-  // {
-  //   icon: <Security />,
-  //   title: "Enterprise Security",
-  //   description: "Advanced security protocols and compliance standards to protect your critical business data",
-  //   color: "#ef4444"
-  // },
-  // {
-  //   icon: <Support />,
-  //   title: "Premium Support",
-  //   description: "Dedicated account managers and priority support channels for immediate assistance",
-  //   color: "#0078d4"
-  // },
-  // {
-  //   icon: <TrendingUp />,
-  //   title: "Growth Focused",
-  //   description: "Scalable solutions that grow with your business and adapt to changing market demands",
-  //   color: "#06b6d4"
-  // },
-  // {
-  //   icon: <CheckCircle />,
-  //   title: "Proven Results",
-  //   description: "Track record of successful implementations with 99.9% uptime and satisfied clients",
-  //   color: "#84cc16"
-  // }
+  {
+    icon: <Security />,
+    title: "Cybersecurity Focused",
+    description: "Built-in security auditing, antivirus setup, and compliance help to keep your business safe.",
+    color: "#8b5cf6"
+  },
+  {
+    icon: <Cloud />,
+    title: "Cloud & Remote Solutions",
+    description: "Specialized support for Office 365, VPNs, remote desktops, and hybrid cloud environments.",
+    color: "#0ea5e9"
+  }
 ];
 
 const stats = [
@@ -123,7 +161,7 @@ export default function Features() {
               backgroundClip: 'text',
             }}
           >
-            The Premium Difference
+           Why Clients Trust Us
           </Typography>
           
           <Typography 
@@ -137,8 +175,7 @@ export default function Features() {
               fontSize: { xs: '1.1rem', md: '1.2rem' }
             }}
           >
-            We deliver more than just IT solutions. Our team is dedicated to providing 
-            a premium experience, ensuring your business thrives in the digital world.
+            We combine certified expertise, personalized service, and proactive support to keep your systems secure, stable, and ready for growth — even when others aren’t available.
           </Typography>
         </Box>
 

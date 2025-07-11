@@ -1,7 +1,7 @@
 'use client';
 
 import { Box, Typography, Container, Grid, Chip, Divider } from "@mui/material";
-import { TrendingUp, Security, Cloud, Email, Phone, LocationOn } from "@mui/icons-material";
+import { TrendingUp, Security, Cloud, Email, Phone, LocationOn, Apple } from "@mui/icons-material";
 
 export default function Footer() {
   const services = [
@@ -19,9 +19,9 @@ export default function Footer() {
   ];
 
   const highlights = [
-    { icon: <TrendingUp />, text: "Growth Focused" },
-    { icon: <Security />, text: "Secure Solutions" },
-    { icon: <Cloud />, text: "Azure Certified" }
+     { icon: <TrendingUp />, text: "Scalable IT Solutions" },
+    { icon: <Security />, text: "Cybersecurity Ready" },
+    { icon: <Apple  />, text: "Apple Device Management" }
   ];
 
   return (
@@ -73,8 +73,7 @@ export default function Footer() {
                     fontSize: '0.95rem'
                   }}
                 >
-                  Transforming businesses through expert IT solutions, Azure cloud services, 
-                  and strategic consulting. Your trusted partner for digital transformation.
+                  Empowering businesses with expert IT support, Azure cloud solutions, and strategic consulting. Your trusted partner in secure and scalable digital transformation.
                 </Typography>
                 
                 {/* Highlight Chips */}
