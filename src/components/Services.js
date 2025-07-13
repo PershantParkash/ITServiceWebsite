@@ -86,20 +86,6 @@ const services = [
     bgGradient: "linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.05) 100%)",
     popular: false
   },
-  // {
-  //   title: "Weekend Emergency Support",
-  //   icon: <SupportAgent fontSize="large" />,
-  //   desc: "Emergency response every Sunday for critical IT issues — remote or on-site.",
-  //   features: [
-  //     "Sunday Availability", 
-  //     "1-Hour Response*", 
-  //     "System Crash Fix", 
-  //     "Remote or On-Site Help"
-  //   ],
-  //   color: "#ef4444",
-  //   bgGradient: "linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.05) 100%)",
-  //   popular: true
-  // }
 ];
 
 export default function Services() {
@@ -174,10 +160,20 @@ export default function Services() {
           </Typography>
         </Box>
 
-        {/* Services Grid - 2x2 Layout */}
-        <Grid container spacing={4}>
+        {/* Services Grid - 2x2 Layout with Center Alignment for screens ≤1200px */}
+        <Grid 
+          container 
+          spacing={4}
+          sx={{
+            // Center the grid on screens 1200px and below
+            justifyContent: { xs: 'center', lg: 'flex-start' },
+            // Optional: Add max-width to prevent grid from being too wide on smaller screens
+            maxWidth: { xs: '800px', lg: '100%' },
+            mx: 'auto'
+          }}
+        >
           {services.map((service, idx) => (
-            <Grid item xs={12} md={6} key={service.title}>
+            <Grid item xs={12} sm={10} md={6} lg={6} key={service.title}>
               <Card 
                 sx={{
                   minHeight: 420,

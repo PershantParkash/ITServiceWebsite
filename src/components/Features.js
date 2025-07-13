@@ -1,10 +1,10 @@
 'use client';
 
 import { Box, Typography, Grid, Container, Chip, Paper } from "@mui/material";
-import { 
-  CheckCircle, 
-  Security, 
-  Speed, 
+import {
+  CheckCircle,
+  Security,
+  Speed,
   People,
   Verified, SupportAgent, Cloud
 } from "@mui/icons-material";
@@ -18,12 +18,12 @@ const features = [
     color: "#3b82f6"
   },
   {
-    icon: <SupportAgent />,
-    title: "Weekend Availability",
-    description: "Get professional IT help even on Sundays — perfect for urgent fixes or weekend planning.",
-    color: "#ef4444"
-  },
-  {
+    icon: <Security />,
+    title: "Cybersecurity Focused",
+    description: "Built-in security auditing, antivirus setup, and compliance help to keep your business safe.",
+    color: "#8b5cf6"
+  }, 
+   {
     icon: <People />,
     title: "Client-First Approach",
     description: "We design IT solutions around your unique business goals, no matter the size of your team.",
@@ -36,17 +36,17 @@ const features = [
     color: "#f59e0b"
   },
   {
-    icon: <Security />,
-    title: "Cybersecurity Focused",
-    description: "Built-in security auditing, antivirus setup, and compliance help to keep your business safe.",
-    color: "#8b5cf6"
-  },
-  {
     icon: <Cloud />,
     title: "Cloud & Remote Solutions",
     description: "Specialized support for Office 365, VPNs, remote desktops, and hybrid cloud environments.",
     color: "#0ea5e9"
-  }
+  },
+  {
+    icon: <SupportAgent />,
+    title: "Weekend Availability",
+    description: "Get professional IT help even on Sundays — perfect for urgent fixes or weekend planning.",
+    color: "#ef4444"
+  },
 ];
 
 const stats = [
@@ -58,10 +58,10 @@ const stats = [
 
 export default function Features() {
   return (
-    <Box 
+    <Box
       id="about"
-      sx={{ 
-        py: 12, 
+      sx={{
+        py: 12,
         background: 'linear-gradient(180deg, #1e293b 0%, #0f172a 50%, #1e293b 100%)',
         position: 'relative',
         overflow: 'hidden',
@@ -79,25 +79,25 @@ export default function Features() {
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
         {/* Section Header */}
         <Box sx={{ textAlign: 'center', mb: 8 }}>
-          <Chip 
-            label="Why Choose Us" 
-            sx={{ 
-              mb: 3, 
-              px: 3, 
+          <Chip
+            label="Why Choose Us"
+            sx={{
+              mb: 3,
+              px: 3,
               py: 1,
               backgroundColor: 'rgba(16, 185, 129, 0.1)',
               color: '#10b981',
               border: '1px solid rgba(16, 185, 129, 0.2)',
               fontWeight: 600,
               fontSize: '0.9rem'
-            }} 
+            }}
           />
-          
-          <Typography 
-            variant="h2" 
+
+          <Typography
+            variant="h2"
             component="h2"
-            sx={{ 
-              fontWeight: 800, 
+            sx={{
+              fontWeight: 800,
               color: '#ffffff',
               fontSize: { xs: '2.2rem', md: '2.8rem' },
               lineHeight: 1.2,
@@ -109,12 +109,12 @@ export default function Features() {
               backgroundClip: 'text',
             }}
           >
-           Why Clients Trust Us
+            Why Clients Trust Us
           </Typography>
-          
-          <Typography 
-            variant="h6" 
-            sx={{ 
+
+          <Typography
+            variant="h6"
+            sx={{
               color: '#94a3b8',
               fontWeight: 400,
               lineHeight: 1.6,
@@ -123,15 +123,23 @@ export default function Features() {
               fontSize: { xs: '1.1rem', md: '1.2rem' }
             }}
           >
-            We combine certified expertise, personalized service, and proactive support to keep your systems secure, stable, and ready for growth — even when others aren’t available.
+            We combine certified expertise, personalized service, and proactive support to keep your systems secure, stable, and ready for growth — even when others aren't available.
           </Typography>
         </Box>
 
-        {/* Stats Section */}
+        {/* Stats Section - Always Centered */}
         <Box sx={{ mb: 10 }}>
-          <Grid container spacing={4}>
+          <Grid
+            container
+            spacing={4}
+            sx={{
+              justifyContent: 'center',
+              maxWidth: '900px',
+              mx: 'auto'
+            }}
+          >
             {stats.map((stat, index) => (
-              <Grid xs={6} md={3} key={index}>
+              <Grid item xs={6} md={3} key={index}>
                 <Paper
                   sx={{
                     p: 3,
@@ -148,9 +156,9 @@ export default function Features() {
                     }
                   }}
                 >
-                  <Typography 
-                    variant="h3" 
-                    sx={{ 
+                  <Typography
+                    variant="h3"
+                    sx={{
                       fontWeight: 800,
                       color: stat.color,
                       fontSize: { xs: '1.8rem', md: '2.2rem' },
@@ -159,8 +167,8 @@ export default function Features() {
                   >
                     {stat.number}
                   </Typography>
-                  <Typography 
-                    sx={{ 
+                  <Typography
+                    sx={{
                       color: '#94a3b8',
                       fontWeight: 500,
                       fontSize: '0.9rem'
@@ -174,10 +182,18 @@ export default function Features() {
           </Grid>
         </Box>
 
-        {/* Features Grid */}
-        <Grid container spacing={4}>
+        {/* Features Grid - Centered on screens ≤1200px */}
+        <Grid
+          container
+          spacing={4}
+          sx={{
+            justifyContent: { xs: 'center', lg: 'flex-start' },
+            maxWidth: { xs: '1000px', lg: '100%' },
+            mx: 'auto'
+          }}
+        >
           {features.map((feature, index) => (
-            <Grid xs={12} sm={6} lg={3} key={index}>
+            <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
               <Box
                 sx={{
                   p: 3,
@@ -231,10 +247,10 @@ export default function Features() {
                 />
 
                 {/* Icon */}
-                <Box 
-                  sx={{ 
-                    display: 'flex', 
-                    alignItems: 'center', 
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
                     justifyContent: 'center',
                     width: 60,
                     height: 60,
@@ -245,9 +261,9 @@ export default function Features() {
                     zIndex: 1,
                   }}
                 >
-                  <Box 
+                  <Box
                     className="feature-icon"
-                    sx={{ 
+                    sx={{
                       color: '#94a3b8',
                       transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                       fontSize: '1.8rem'
@@ -258,10 +274,10 @@ export default function Features() {
                 </Box>
 
                 {/* Title */}
-                <Typography 
-                  variant="h6" 
+                <Typography
+                  variant="h6"
                   component="h3"
-                  sx={{ 
+                  sx={{
                     fontWeight: 700,
                     color: '#ffffff',
                     mb: 2,
@@ -273,8 +289,8 @@ export default function Features() {
                 </Typography>
 
                 {/* Description */}
-                <Typography 
-                  sx={{ 
+                <Typography
+                  sx={{
                     color: '#94a3b8',
                     lineHeight: 1.6,
                     fontSize: '0.9rem',
@@ -289,7 +305,7 @@ export default function Features() {
         </Grid>
 
         {/* Bottom CTA */}
-        <Box sx={{ textAlign: 'center', mt: 10 }}>
+        {/* <Box sx={{ textAlign: 'center', mt: 10 }}>
           <Paper
             sx={{
               p: 6,
@@ -328,7 +344,7 @@ export default function Features() {
               </Typography>
             </Box>
           </Paper>
-        </Box>
+        </Box> */}
       </Container>
     </Box>
   );

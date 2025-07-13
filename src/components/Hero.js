@@ -17,6 +17,7 @@ export default function Hero() {
       });
     }
   };
+  
   const highlights = [
     { icon: <TrendingUp />, text: "Scalable IT Solutions" },
     { icon: <Security />, text: "Cybersecurity Ready" },
@@ -48,8 +49,33 @@ export default function Hero() {
       }}>
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
         <Grid container spacing={4} alignItems="center">
-          <Grid item xs={12} md={8}>
-            <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+          {/* Main Content */}
+          <Grid 
+            item 
+            xs={12} 
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: {
+                xs: 'center',
+                sm: 'center', 
+                md: 'center',
+                lg: 'flex-start',
+                xl: 'flex-start'
+              }
+            }}
+          >
+            <Box sx={{ 
+              textAlign: { 
+                xs: 'center', 
+                sm: 'center',
+                md: 'center',
+                lg: 'left',
+                xl: 'left'
+              },
+              width: '100%',
+              maxWidth: { xs: '100%', xl: 'none' }
+            }}>
               {/* Subtitle Badge */}
               <Chip 
                 label="Premium IT Solutions Provider" 
@@ -64,7 +90,56 @@ export default function Hero() {
                   fontSize: '0.9rem'
                 }} 
               />
-              
+              {/* <Box sx={{ 
+              display: { xs: 'none', sm: 'none', md: 'block', lg: 'none', xl: 'none' },
+              position: 'relative',
+              height: { md: '300px', lg: '400px' },
+              width: '100%',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                // transform: 'translate(-50%, -50%)',
+                width: { md: '240px', lg: '300px' },
+                height: { md: '240px', lg: '300px' },
+                background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.1) 100%)',
+                borderRadius: '50%',
+                filter: 'blur(40px)',
+                animation: 'pulse 4s ease-in-out infinite',
+              },
+              '@keyframes pulse': {
+                '0%, 100%': { transform: 'translate(-50%, -50%) scale(1)' },
+                '50%': { transform: 'translate(-50%, -50%) scale(1.1)' },
+              }
+            }}>
+              <Box sx={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: { md: '160px', lg: '200px' },
+                height: { md: '160px', lg: '200px' },
+                border: '2px solid rgba(59, 130, 246, 0.3)',
+                borderRadius: '20px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                backdropFilter: 'blur(10px)',
+              }}>
+                <Typography 
+                  variant="h3" 
+                  sx={{ 
+                    color: '#3b82f6', 
+                    fontWeight: 700,
+                    fontSize: { md: '2.5rem', lg: '3rem' }
+                  }}
+                >
+                  IT
+                </Typography>
+              </Box>
+            </Box> */}
               {/* Main Headline */}
               <Typography 
                 variant="h1" 
@@ -73,7 +148,13 @@ export default function Hero() {
                 sx={{ 
                   fontWeight: 800, 
                   color: '#ffffff',
-                  fontSize: { xs: '2.5rem', md: '3.5rem', lg: '4rem' },
+                  fontSize: { 
+                    xs: '2.5rem', 
+                    sm: '3rem',
+                    md: '3rem', 
+                    lg: '3.5rem',
+                    xl: '4rem'
+                  },
                   lineHeight: 1.1,
                   letterSpacing: '-0.02em',
                   mb: 3,
@@ -103,16 +184,39 @@ export default function Hero() {
                   fontWeight: 400,
                   lineHeight: 1.6,
                   mb: 4,
-                  fontSize: { xs: '1.1rem', md: '1.25rem' },
-                  maxWidth: '600px',
-                  mx: { xs: 'auto', md: 0 }
+                  fontSize: { 
+                    xs: '1.1rem', 
+                    sm: '1.15rem',
+                    md: '1.2rem',
+                    lg: '1.25rem'
+                  },
+                  maxWidth: { xs: '100%', lg: '600px', xl: '600px' },
+                  mx: { 
+                    xs: 'auto', 
+                    sm: 'auto',
+                    md: 'auto',
+                    lg: 0,
+                    xl: 0
+                  }
                 }}
               >
-                We provide expert-level IT support tailored for small businesses, professionals, and home users. Whether you’re dealing with a system outage, email failure, or just need help setting up your tech, we’re here to solve it — fast.
+          Expert tech support when you need it most — for offices, freelancers, and homes. Fast solutions, no stress.
               </Typography>
               
               {/* Highlight Chips */}
-              <Box sx={{ display: 'flex', gap: 2, mb: 5, flexWrap: 'wrap', justifyContent: { xs: 'center', md: 'flex-start' } }}>
+              <Box sx={{ 
+                display: 'flex', 
+                gap: 2, 
+                mb: 5, 
+                flexWrap: 'wrap', 
+                justifyContent: { 
+                  xs: 'center', 
+                  sm: 'center',
+                  md: 'center',
+                  lg: 'flex-start',
+                  xl: 'flex-start'
+                } 
+              }}>
                 {highlights.map((item, index) => (
                   <Chip
                     key={index}
@@ -123,6 +227,7 @@ export default function Hero() {
                       color: '#e2e8f0',
                       border: '1px solid rgba(255, 255, 255, 0.1)',
                       fontWeight: 500,
+                      fontSize: { xs: '0.85rem', sm: '0.9rem' },
                       '& .MuiChip-icon': {
                         color: '#3b82f6'
                       },
@@ -137,7 +242,25 @@ export default function Hero() {
               </Box>
               
               {/* CTA Buttons */}
-              <Box sx={{ display: 'flex', gap: 3, flexDirection: { xs: 'column', sm: 'row' }, justifyContent: { xs: 'center', md: 'flex-start' } }}>
+              <Box sx={{ 
+                display: 'flex', 
+                gap: 3, 
+                flexDirection: { xs: 'column', sm: 'row' }, 
+                justifyContent: { 
+                  xs: 'center', 
+                  sm: 'center',
+                  md: 'center',
+                  lg: 'flex-start',
+                  xl: 'flex-start'
+                },
+                alignItems: { 
+                  xs: 'center', 
+                  sm: 'center', 
+                  md: 'center',
+                  lg: 'flex-start',
+                  xl: 'flex-start'
+                }
+              }}>
                 <Button
                   variant="contained"
                   size="large"
@@ -145,7 +268,7 @@ export default function Hero() {
                     px: 4, 
                     py: 1.5,
                     fontWeight: 600, 
-                    fontSize: '1.1rem', 
+                    fontSize: { xs: '1rem', sm: '1.1rem' }, 
                     borderRadius: 3,
                     background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)',
                     boxShadow: '0 10px 25px rgba(59, 130, 246, 0.3)',
@@ -169,7 +292,7 @@ export default function Hero() {
                     px: 4, 
                     py: 1.5,
                     fontWeight: 600, 
-                    fontSize: '1.1rem', 
+                    fontSize: { xs: '1rem', sm: '1.1rem' }, 
                     borderRadius: 3,
                     borderColor: 'rgba(255, 255, 255, 0.2)',
                     color: '#e2e8f0',
@@ -190,20 +313,21 @@ export default function Hero() {
             </Box>
           </Grid>
           
-          {/* Right side - Visual Element */}
-          <Grid item xs={12} md={4}>
+          {/* Right side - Visual Element - Only shows above 1200px */}
+          <Grid item xs={12} md={5} lg={4}>
             <Box sx={{ 
-              display: { xs: 'none', md: 'block' },
+              display: { xs: 'none', sm: 'none', md: 'none', lg: 'block', xl: 'block' },
               position: 'relative',
-              height: '400px',
+              height: { md: '300px', lg: '400px' },
+              width: '100%',
               '&::before': {
                 content: '""',
                 position: 'absolute',
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
-                width: '300px',
-                height: '300px',
+                width: { md: '240px', lg: '300px' },
+                height: { md: '240px', lg: '300px' },
                 background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.1) 100%)',
                 borderRadius: '50%',
                 filter: 'blur(40px)',
@@ -219,8 +343,8 @@ export default function Hero() {
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
-                width: '200px',
-                height: '200px',
+                width: { md: '160px', lg: '200px' },
+                height: { md: '160px', lg: '200px' },
                 border: '2px solid rgba(59, 130, 246, 0.3)',
                 borderRadius: '20px',
                 display: 'flex',
@@ -229,7 +353,14 @@ export default function Hero() {
                 backgroundColor: 'rgba(255, 255, 255, 0.02)',
                 backdropFilter: 'blur(10px)',
               }}>
-                <Typography variant="h3" sx={{ color: '#3b82f6', fontWeight: 700 }}>
+                <Typography 
+                  variant="h3" 
+                  sx={{ 
+                    color: '#3b82f6', 
+                    fontWeight: 700,
+                    fontSize: { md: '2.5rem', lg: '3rem' }
+                  }}
+                >
                   IT
                 </Typography>
               </Box>

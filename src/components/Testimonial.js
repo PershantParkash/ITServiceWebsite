@@ -349,7 +349,7 @@ export default function TestimonialComponent() {
         </Box>
 
         {/* Stats Section */}
-        <Grid container spacing={4} sx={{ mt: 8 }}>
+        <Grid container spacing={4} sx={{ mt: 8,justifyContent: 'center'  }}>
           <Grid item xs={12} sm={6} md={3}>
             <Box sx={{ 
               textAlign: 'center',

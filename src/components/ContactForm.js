@@ -1,13 +1,30 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Typography, TextField, Button, Container, Alert, Grid, Chip } from "@mui/material";
-import { Email, Phone, LocationOn, Send } from "@mui/icons-material";
+import { Email, Phone, LocationOn, Send, CalendarMonth } from "@mui/icons-material";
 
 export default function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.href = 'https://assets.calendly.com/assets/external/widget.css';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.head.removeChild(link);
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -25,10 +42,26 @@ export default function ContactForm() {
     setForm({ name: "", email: "", message: "" });
   };
 
+  const handleCalendlyClick = () => {
+    // Check if Calendly is loaded
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({
+        url: 'https://calendly.com/pershantparkash',
+        text: 'Schedule time with me',
+        color: '#8b5cf6',
+        textColor: '#ffffff',
+        branding: true
+      });
+    } else {
+      // Fallback to opening in new tab if widget fails to load
+      window.open('https://calendly.com/pershantparkash', '_blank');
+    }
+  };
+
   const contactInfo = [
-    { icon: <Email />, label: "Email", value: "hello@itservices.com" },
-    { icon: <Phone />, label: "Phone", value: "+1 (555) 123-4567" },
-    { icon: <LocationOn />, label: "Location", value: "New York, NY" }
+    { icon: <LocationOn />, label: "Location", value: "20 Wenlock Road, London, England, N1 7GU" },
+    { icon: <Email />, label: "Email", value: "info@weekenditwiz.co.uk" },
+    { icon: <Phone />, label: "Phone", value: "07424 665990" },
   ];
 
   return (
@@ -52,12 +85,20 @@ export default function ContactForm() {
       }}
     >
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Grid container spacing={8} alignItems="center" justifyContent="center">
+        <Grid container spacing={8} alignItems="center" justifyContent="center" sx={{
+          '@media (max-width: 900px)': {
+            flexDirection: 'column'
+          }
+        }}>
           {/* Left side - Contact Info */}
-          <Grid item xs={12} md={5}>
+          <Grid item xs={12} md={5} sx={{
+            '@media (max-width: 900px)': {
+              width: '100%'
+            }
+          }}>
             <Box sx={{
               textAlign: 'center',
-              '@media (min-width: 826px)': {
+              '@media (min-width: 901px)': {
                 textAlign: 'left'
               }
             }}>
@@ -117,12 +158,12 @@ export default function ContactForm() {
                   fontSize: { xs: '1rem', md: '1.1rem' },
                   maxWidth: '400px',
                   mx: 'auto',
-                  '@media (min-width: 826px)': {
+                  '@media (min-width: 901px)': {
                     mx: 0
                   }
                 }}
               >
-                Have a question or need urgent IT support? Fill out the form — our certified team will respond promptly, even on weekends.
+                Have a question or need urgent IT support? Fill out the form or book a consultation — our certified team will respond promptly, even on weekends.
               </Typography>
 
               {/* Contact Information */}
@@ -131,7 +172,7 @@ export default function ContactForm() {
                 flexDirection: 'column',
                 gap: 3,
                 alignItems: 'center',
-                '@media (min-width: 826px)': {
+                '@media (min-width: 901px)': {
                   alignItems: 'flex-start'
                 }
               }}>
@@ -143,7 +184,7 @@ export default function ContactForm() {
                       alignItems: 'center',
                       gap: 2,
                       justifyContent: 'center',
-                      '@media (min-width: 826px)': {
+                      '@media (min-width: 901px)': {
                         justifyContent: 'flex-start'
                       }
                     }}
@@ -160,6 +201,9 @@ export default function ContactForm() {
                       '& svg': {
                         color: '#3b82f6',
                         fontSize: '1.2rem'
+                      },
+                      '@media (max-width: 900px)': {
+                        display: 'none'
                       }
                     }}>
                       {item.icon}
@@ -175,6 +219,42 @@ export default function ContactForm() {
                   </Box>
                 ))}
               </Box>
+
+              {/* Calendly Button */}
+              <Box sx={{ 
+                mt: 4, 
+                display: 'flex', 
+                justifyContent: 'center', 
+                '@media (min-width: 901px)': { 
+                  justifyContent: 'flex-start' 
+                } 
+              }}>
+                <Button
+                  onClick={handleCalendlyClick}
+                  variant="outlined"
+                  size="large"
+                  startIcon={<CalendarMonth />}
+                  sx={{
+                    px: 3,
+                    py: 1.5,
+                    fontWeight: 600,
+                    fontSize: '1rem',
+                    borderRadius: '12px',
+                    border: '1px solid rgba(139, 92, 246, 0.3)',
+                    color: '#8b5cf6',
+                    backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                    textTransform: 'none',
+                    '&:hover': {
+                      backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                      border: '1px solid rgba(139, 92, 246, 0.5)',
+                      transform: 'translateY(-2px)',
+                    },
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  Book Consultation
+                </Button>
+              </Box>
             </Box>
           </Grid>
 
@@ -182,8 +262,11 @@ export default function ContactForm() {
           <Grid item xs={12} md={7} sx={{
             display: 'flex',
             justifyContent: 'center',
-            '@media (min-width: 826px)': {
+            '@media (min-width: 901px)': {
               justifyContent: 'flex-start'
+            },
+            '@media (max-width: 900px)': {
+              width: '100%'
             }
           }}>
             <Box sx={{
@@ -194,7 +277,11 @@ export default function ContactForm() {
               p: { xs: 4, md: 6 },
               boxShadow: '0 25px 50px rgba(0, 0, 0, 0.3)',
               width: '100%',
-              maxWidth: { xs: '500px', md: 'none' }
+              maxWidth: { xs: 'none', md: 'none' },
+              '@media (max-width: 900px)': {
+                width: '100%',
+                maxWidth: '100%'
+              }
             }}>
               <Box
                 component="form"
@@ -298,7 +385,6 @@ export default function ContactForm() {
                     },
                   }}
                 />
-
 
                 {error && (
                   <Alert

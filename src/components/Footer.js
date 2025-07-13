@@ -5,17 +5,18 @@ import { TrendingUp, Security, Cloud, Email, Phone, LocationOn, Apple } from "@m
 
 export default function Footer() {
   const services = [
-    "IT Support & Maintenance",
-    "Azure Cloud Solutions", 
-    "Network Security",
-    "Data Backup & Recovery",
-    "Strategic IT Consulting"
+    "User & Device Support",
+    "Office 365 & Email Support", 
+    "Network & Remote Access",
+    "Apple Device Management (JAMF)",
+    "Cybersecurity & Compliance"
   ];
 
   const contactInfo = [
-    { icon: <Email />, text: "hello@itservices.com" },
-    { icon: <Phone />, text: "+1 (555) 123-4567" },
-    { icon: <LocationOn />, text: "New York, NY" }
+     { icon: <LocationOn />, text: "20 Wenlock Road, London, England, N1 7GU" },
+    { icon: <Email />, text: "info@weekenditwiz.co.uk" },
+    { icon: <Phone />, text: "07424 665990" },
+   
   ];
 
   const highlights = [
@@ -42,11 +43,15 @@ export default function Footer() {
     }}>
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
         {/* Main Footer Content */}
-        <Box sx={{ py: 8 }}>
-          <Grid container spacing={6}>
+        <Box sx={{ py: 8, width: '100%' }}>
+          <Grid container spacing={6} sx={{ width: '100%' }}>
             {/* Company Info */}
-            <Grid item xs={12} md={4}>
-              <Box sx={{ mb: 4 }}>
+            <Grid item xs={12} md={4} sx={{ width: '100%' }}>
+              <Box sx={{ 
+                mb: 4,
+                textAlign: { xs: 'center', md: 'left' },
+                width: '100%'
+              }}>
                 <Typography 
                   variant="h5" 
                   component="h3" 
@@ -62,7 +67,7 @@ export default function Footer() {
                     backgroundClip: 'text',
                   }}
                 >
-                  Premium IT Services
+                    WeekendItWiz
                 </Typography>
                 <Typography 
                   variant="body1" 
@@ -77,7 +82,12 @@ export default function Footer() {
                 </Typography>
                 
                 {/* Highlight Chips */}
-                <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                <Box sx={{ 
+                  display: 'flex', 
+                  gap: 1, 
+                  flexWrap: 'wrap',
+                  justifyContent: { xs: 'center', md: 'flex-start' }
+                }}>
                   {highlights.map((item, index) => (
                     <Chip
                       key={index}
@@ -102,81 +112,27 @@ export default function Footer() {
             </Grid>
 
             {/* Services */}
-            <Grid item xs={12} md={4}>
-              <Typography 
-                variant="h6" 
-                gutterBottom 
-                sx={{ 
-                  fontWeight: 700, 
-                  color: '#ffffff',
-                  mb: 3,
-                  fontSize: '1.1rem'
-                }}
-              >
-                Our Services
-              </Typography>
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                {services.map((service, index) => (
-                  <Typography 
-                    key={index}
-                    variant="body2" 
-                    sx={{ 
-                      color: '#94a3b8',
-                      fontSize: '0.9rem',
-                      '&:hover': {
-                        color: '#3b82f6',
-                        cursor: 'pointer',
-                        transition: 'color 0.3s ease'
-                      }
-                    }}
-                  >
-                    {service}
-                  </Typography>
-                ))}
-              </Box>
-            </Grid>
-
-            {/* Contact Info */}
-            <Grid item xs={12} md={4}>
-              <Typography 
-                variant="h6" 
-                gutterBottom 
-                sx={{ 
-                  fontWeight: 700, 
-                  color: '#ffffff',
-                  mb: 3,
-                  fontSize: '1.1rem'
-                }}
-              >
-                Get In Touch
-              </Typography>
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
-                {contactInfo.map((item, index) => (
-                  <Box 
-                    key={index}
-                    sx={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      gap: 2
-                    }}
-                  >
-                    <Box sx={{
-                      width: 36,
-                      height: 36,
-                      borderRadius: '8px',
-                      background: 'rgba(59, 130, 246, 0.1)',
-                      border: '1px solid rgba(59, 130, 246, 0.2)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      '& svg': {
-                        color: '#3b82f6',
-                        fontSize: '1rem'
-                      }
-                    }}>
-                      {item.icon}
-                    </Box>
+            <Grid item xs={12} md={4} sx={{ width: '100%' }}>
+              <Box sx={{ 
+                textAlign: { xs: 'center', md: 'left' },
+                width: '100%'
+              }}>
+                <Typography 
+                  variant="h6" 
+                  gutterBottom 
+                  sx={{ 
+                    fontWeight: 700, 
+                    color: '#ffffff',
+                    mb: 3,
+                    fontSize: '1.1rem'
+                  }}
+                >
+                  Our Services
+                </Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  {services.map((service, index) => (
                     <Typography 
+                      key={index}
                       variant="body2" 
                       sx={{ 
                         color: '#94a3b8',
@@ -188,31 +144,79 @@ export default function Footer() {
                         }
                       }}
                     >
-                      {item.text}
+                      {service}
                     </Typography>
-                  </Box>
-                ))}
+                  ))}
+                </Box>
               </Box>
+            </Grid>
 
-              {/* CTA Text */}
+            {/* Contact Info */}
+            <Grid item xs={12} md={4} sx={{ width: '100%' }}>
               <Box sx={{ 
-                mt: 4, 
-                p: 3, 
-                borderRadius: '12px',
-                background: 'rgba(59, 130, 246, 0.05)',
-                border: '1px solid rgba(59, 130, 246, 0.1)'
+                textAlign: { xs: 'center', md: 'left' },
+                width: '100%'
               }}>
                 <Typography 
-                  variant="body2" 
+                  variant="h6" 
+                  gutterBottom 
                   sx={{ 
-                    color: '#3b82f6',
-                    fontWeight: 600,
-                    fontSize: '0.85rem',
-                    lineHeight: 1.5
+                    fontWeight: 700, 
+                    color: '#ffffff',
+                    mb: 3,
+                    fontSize: '1.1rem'
                   }}
                 >
-                  Ready to transform your IT infrastructure? Get your free consultation today.
+                  Get In Touch
                 </Typography>
+                <Box sx={{ 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  gap: 2.5,
+                  alignItems: { xs: 'center', md: 'flex-start' }
+                }}>
+                  {contactInfo.map((item, index) => (
+                    <Box 
+                      key={index}
+                      sx={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        gap: 2
+                      }}
+                    >
+                      <Box sx={{
+                        width: 36,
+                        height: 36,
+                        borderRadius: '8px',
+                        background: 'rgba(59, 130, 246, 0.1)',
+                        border: '1px solid rgba(59, 130, 246, 0.2)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        '& svg': {
+                          color: '#3b82f6',
+                          fontSize: '1rem'
+                        }
+                      }}>
+                        {item.icon}
+                      </Box>
+                      <Typography 
+                        variant="body2" 
+                        sx={{ 
+                          color: '#94a3b8',
+                          fontSize: '0.9rem',
+                          '&:hover': {
+                            color: '#3b82f6',
+                            cursor: 'pointer',
+                            transition: 'color 0.3s ease'
+                          }
+                        }}
+                      >
+                        {item.text}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
               </Box>
             </Grid>
           </Grid>
@@ -231,7 +235,8 @@ export default function Footer() {
           justifyContent: 'space-between', 
           alignItems: 'center',
           flexDirection: { xs: 'column', md: 'row' },
-          gap: { xs: 2, md: 0 }
+          gap: { xs: 2, md: 0 },
+          textAlign: { xs: 'center', md: 'left' }
         }}>
           <Typography 
             variant="body2" 
@@ -240,7 +245,7 @@ export default function Footer() {
               fontSize: '0.85rem'
             }}
           >
-            &copy; {new Date().getFullYear()} Premium IT Services. All rights reserved.
+            &copy; {new Date().getFullYear()} Powered by Zaptech LTD. All rights reserved.
           </Typography>
           
           <Box sx={{ display: 'flex', gap: 4 }}>
