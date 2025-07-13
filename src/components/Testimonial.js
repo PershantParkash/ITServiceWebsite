@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Typography, Container, Grid, Chip, Avatar, IconButton, Card, CardContent } from "@mui/material";
 import { FormatQuote, ArrowBack, ArrowForward, Star } from "@mui/icons-material";
 

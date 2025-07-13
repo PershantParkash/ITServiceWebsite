@@ -173,8 +173,7 @@ export default function Header() {
           <Box>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
               <Box sx={{
-                width: 40,
-                height: 40,
+                padding:"8px",
                 borderRadius: '10px',
                 background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
                 display: 'flex',
@@ -190,7 +189,7 @@ export default function Header() {
                     fontSize: '1.1rem'
                   }}
                 >
-                  IT
+                  WIZ
                 </Typography>
               </Box>
               <Box>
@@ -540,8 +539,9 @@ export default function Header() {
               {/* Logo */}
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                 <Box sx={{
-                  width: 40,
-                  height: 40,
+                  // width: 40,
+                  // height: 40,
+                  padding:"8px",
                   borderRadius: '10px',
                   background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
                   display: 'flex',
@@ -557,7 +557,7 @@ export default function Header() {
                       fontSize: '1.1rem'
                     }}
                   >
-                    IT
+                    WIZ
                   </Typography>
                 </Box>
                 <Typography 

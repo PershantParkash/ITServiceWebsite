@@ -1,19 +1,19 @@
 'use client';
 
 import { Box, Typography, Grid, Card, CardContent, Container, Chip, Button } from "@mui/material";
-import { 
-  SupportAgent, 
+import {
+  SupportAgent,
   Star,
-  Cloud, 
-  Security, 
-  Devices, 
+  Cloud,
+  Security,
+  Devices,
   MailOutline,
   Wifi,
   Apple,
   CheckCircle,
   ArrowForward,
 } from "@mui/icons-material";
-
+import { useState, useEffect } from "react";
 
 const services = [
   {
@@ -21,9 +21,9 @@ const services = [
     icon: <Devices fontSize="large" />,
     desc: "Troubleshooting, optimization, and setup for Windows, macOS, printers, and peripherals.",
     features: [
-      "PC & Mac Optimization", 
-      "Device Setup", 
-      "Printer & Scanner Help", 
+      "PC & Mac Optimization",
+      "Device Setup",
+      "Printer & Scanner Help",
       "User Onboarding"
     ],
     color: "#3b82f6",
@@ -35,9 +35,9 @@ const services = [
     icon: <MailOutline fontSize="large" />,
     desc: "Reliable setup, migration, and issue resolution for Outlook, OneDrive, and SharePoint.",
     features: [
-      "Outlook Troubleshooting", 
-      "Email Migration", 
-      "License Issues", 
+      "Outlook Troubleshooting",
+      "Email Migration",
+      "License Issues",
       "Domain & DNS Help"
     ],
     color: "#0ea5e9",
@@ -49,9 +49,9 @@ const services = [
     icon: <Wifi fontSize="large" />,
     desc: "Get secure and stable access through VPNs, Wi-Fi setup, and remote desktop support.",
     features: [
-      "Wi-Fi Troubleshooting", 
-      "VPN Setup", 
-      "Remote Desktop Fixes", 
+      "Wi-Fi Troubleshooting",
+      "VPN Setup",
+      "Remote Desktop Fixes",
       "Router & Firewall Help"
     ],
     color: "#10b981",
@@ -63,9 +63,9 @@ const services = [
     icon: <Apple fontSize="large" />,
     desc: "Manage, monitor, and control Macs and Apple devices with JAMF administration.",
     features: [
-      "Mac Enrollment", 
-      "Remote Lock & Wipe", 
-      "App Installation", 
+      "Mac Enrollment",
+      "Remote Lock & Wipe",
+      "App Installation",
       "Device Grouping"
     ],
     color: "#8b5cf6",
@@ -77,9 +77,9 @@ const services = [
     icon: <Security fontSize="large" />,
     desc: "Protect your business with antivirus setup, access control, and security audits.",
     features: [
-      "Security Audits", 
-      "Antivirus Setup", 
-      "BitLocker/FileVault", 
+      "Security Audits",
+      "Antivirus Setup",
+      "BitLocker/FileVault",
       "GDPR Guidance"
     ],
     color: "#f59e0b",
@@ -89,11 +89,57 @@ const services = [
 ];
 
 export default function Services() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [calendlyLoaded, setCalendlyLoaded] = useState(false);
+  useEffect(() => {
+    // Load Calendly CSS
+    const link = document.createElement('link');
+    link.href = 'https://assets.calendly.com/assets/external/widget.css';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+
+    // Load Calendly JS
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    script.onload = () => setCalendlyLoaded(true);
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup
+      if (document.head.contains(link)) {
+        document.head.removeChild(link);
+      }
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
+
+  // Add this function to handle Calendly popup
+  const handleCalendlyClick = (e) => {
+    e.preventDefault();
+
+    // Check if Calendly is loaded
+    if (window.Calendly && calendlyLoaded) {
+      window.Calendly.initPopupWidget({
+        url: 'https://calendly.com/pershantparkash',
+        text: 'Schedule time with me',
+        color: '#3b82f6',
+        textColor: '#ffffff',
+        branding: true
+      });
+    } else {
+      // Fallback to opening in new tab if widget fails to load
+      window.open('https://calendly.com/pershantparkash', '_blank');
+    }
+  };
   return (
-    <Box 
+    <Box
       id="services"
-      sx={{ 
-        py: 12, 
+      sx={{
+        py: 12,
         background: 'linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
         position: 'relative',
         overflow: 'hidden',
@@ -112,25 +158,25 @@ export default function Services() {
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
         {/* Section Header */}
         <Box sx={{ textAlign: 'center', mb: 10 }}>
-          <Chip 
-            label="Our Premium Services" 
-            sx={{ 
-              mb: 3, 
-              px: 3, 
+          <Chip
+            label="Our Premium Services"
+            sx={{
+              mb: 3,
+              px: 3,
               py: 1,
               backgroundColor: 'rgba(59, 130, 246, 0.1)',
               color: '#3b82f6',
               border: '1px solid rgba(59, 130, 246, 0.2)',
               fontWeight: 600,
               fontSize: '0.9rem'
-            }} 
+            }}
           />
-          
-          <Typography 
-            variant="h2" 
+
+          <Typography
+            variant="h2"
             component="h2"
-            sx={{ 
-              fontWeight: 800, 
+            sx={{
+              fontWeight: 800,
               color: '#ffffff',
               fontSize: { xs: '2.2rem', md: '2.8rem', lg: '3.2rem' },
               lineHeight: 1.2,
@@ -144,10 +190,10 @@ export default function Services() {
           >
             Our Premium IT Services
           </Typography>
-          
-          <Typography 
-            variant="h6" 
-            sx={{ 
+
+          <Typography
+            variant="h6"
+            sx={{
               color: '#94a3b8',
               fontWeight: 400,
               lineHeight: 1.6,
@@ -161,8 +207,8 @@ export default function Services() {
         </Box>
 
         {/* Services Grid - 2x2 Layout with Center Alignment for screens ≤1200px */}
-        <Grid 
-          container 
+        <Grid
+          container
           spacing={4}
           sx={{
             // Center the grid on screens 1200px and below
@@ -174,7 +220,7 @@ export default function Services() {
         >
           {services.map((service, idx) => (
             <Grid item xs={12} sm={10} md={6} lg={6} key={service.title}>
-              <Card 
+              <Card
                 sx={{
                   minHeight: 420,
                   background: service.bgGradient,
@@ -242,10 +288,10 @@ export default function Services() {
 
                 <CardContent sx={{ p: 0, height: '100%', display: 'flex', flexDirection: 'column' }}>
                   {/* Icon */}
-                  <Box 
-                    sx={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
                       justifyContent: 'center',
                       width: 80,
                       height: 80,
@@ -255,9 +301,9 @@ export default function Services() {
                       transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
                     }}
                   >
-                    <Box 
+                    <Box
                       className="service-icon"
-                      sx={{ 
+                      sx={{
                         color: '#94a3b8',
                         transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
                       }}
@@ -267,10 +313,10 @@ export default function Services() {
                   </Box>
 
                   {/* Title */}
-                  <Typography 
-                    variant="h4" 
+                  <Typography
+                    variant="h4"
                     component="h3"
-                    sx={{ 
+                    sx={{
                       fontWeight: 700,
                       color: '#ffffff',
                       mb: 2,
@@ -282,8 +328,8 @@ export default function Services() {
                   </Typography>
 
                   {/* Description */}
-                  <Typography 
-                    sx={{ 
+                  <Typography
+                    sx={{
                       color: '#94a3b8',
                       lineHeight: 1.7,
                       mb: 4,
@@ -297,23 +343,23 @@ export default function Services() {
                   {/* Features */}
                   <Box >
                     {service.features.map((feature, index) => (
-                      <Box 
+                      <Box
                         key={index}
-                        sx={{ 
-                          display: 'flex', 
-                          alignItems: 'center', 
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'center',
                           mb: 1.5
                         }}
                       >
-                        <CheckCircle 
-                          sx={{ 
-                            color: service.color, 
-                            fontSize: '1.1rem', 
-                            mr: 2 
-                          }} 
+                        <CheckCircle
+                          sx={{
+                            color: service.color,
+                            fontSize: '1.1rem',
+                            mr: 2
+                          }}
                         />
-                        <Typography 
-                          sx={{ 
+                        <Typography
+                          sx={{
                             color: '#e2e8f0',
                             fontSize: '0.95rem',
                             fontWeight: 500
@@ -358,9 +404,9 @@ export default function Services() {
         </Grid>
 
         {/* Bottom CTA Section */}
-        <Box 
-          sx={{ 
-            textAlign: 'center', 
+        <Box
+          sx={{
+            textAlign: 'center',
             mt: 12,
             p: 6,
             background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)',
@@ -369,9 +415,9 @@ export default function Services() {
             backdropFilter: 'blur(10px)'
           }}
         >
-          <Typography 
-            variant="h4" 
-            sx={{ 
+          <Typography
+            variant="h4"
+            sx={{
               color: '#ffffff',
               mb: 2,
               fontWeight: 700,
@@ -380,9 +426,9 @@ export default function Services() {
           >
             Ready to Transform Your Business?
           </Typography>
-          <Typography 
-            variant="h6" 
-            sx={{ 
+          <Typography
+            variant="h6"
+            sx={{
               color: '#94a3b8',
               mb: 4,
               fontWeight: 400,
@@ -390,7 +436,7 @@ export default function Services() {
               mx: 'auto'
             }}
           >
-            Get a free consultation and discover how our premium IT services 
+            Get a consultation and discover how our premium IT services
             can accelerate your business growth and digital transformation.
           </Typography>
           <Button
@@ -412,9 +458,10 @@ export default function Services() {
               },
               transition: 'all 0.3s ease'
             }}
-            href="#contact"
+            // href="#contact"
+            onClick={handleCalendlyClick}
           >
-            Get Free Consultation
+            Get Consultation
           </Button>
         </Box>
       </Container>
