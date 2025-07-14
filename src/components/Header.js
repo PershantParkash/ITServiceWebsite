@@ -494,7 +494,7 @@ export default function Header() {
               },
               transition: 'all 0.3s ease'
             }}
-            onClick={handleCalendlyClick}
+            onClick={handleBookConsultation}
           >
             Get Consultation
           </Button>
