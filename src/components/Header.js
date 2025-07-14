@@ -31,6 +31,7 @@ import {
   Email,
   Star
 } from "@mui/icons-material";
+import PaymentModal from "./PaymentModal";
 
 function HideOnScroll({ children }) {
   const trigger = useScrollTrigger({
@@ -48,7 +49,8 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [calendlyLoaded, setCalendlyLoaded] = useState(false);
-
+  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
+  const [consultationAmount] = useState(30); 
   // Add this useEffect to load Calendly scripts
   useEffect(() => {
     // Load Calendly CSS
@@ -75,7 +77,7 @@ export default function Header() {
     };
   }, []);
 
-  // Add this function to handle Calendly popup
+  // // Add this function to handle Calendly popup
   const handleCalendlyClick = (e) => {
     e.preventDefault();
     
@@ -125,6 +127,15 @@ export default function Header() {
       setMobileOpen(false);
     }
   };
+
+   const handleBookConsultation = () => {
+    setPaymentModalOpen(true);
+  };
+
+  const handlePaymentSuccess = () => {
+    handleCalendlyClick();
+  };
+
 
   const navItems = [
     { label: 'Home', href: '#hero' },
@@ -607,7 +618,8 @@ export default function Header() {
               <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2 }}>
                 <Button
                   variant="contained"
-                  onClick={handleCalendlyClick}
+                  // onClick={handleCalendlyClick}
+                   onClick={handleBookConsultation}
                   sx={{ 
                     px: 3, 
                     py: 1,
@@ -674,6 +686,13 @@ export default function Header() {
       >
         {drawer}
       </Drawer>
+
+        <PaymentModal
+              open={paymentModalOpen}
+              onClose={() => setPaymentModalOpen(false)}
+              amount={consultationAmount}
+              onSuccess={handlePaymentSuccess}
+            />
     </>
   );
 }

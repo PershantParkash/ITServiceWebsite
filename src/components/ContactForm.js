@@ -3,11 +3,14 @@
 import { useState, useEffect } from "react";
 import { Box, Typography, TextField, Button, Container, Alert, Grid, Chip } from "@mui/material";
 import { Email, Phone, LocationOn, Send, CalendarMonth } from "@mui/icons-material";
+import PaymentModal from "./PaymentModal";
 
 export default function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
+  const [consultationAmount] = useState(30); // £50 consultation fee
 
   useEffect(() => {
     const link = document.createElement('link');
@@ -30,20 +33,18 @@ export default function ContactForm() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError("");
-    if (!form.name || !form.email || !form.message) {
-      setError("Please fill in all fields.");
-      return;
-    }
-    // Placeholder for backend integration
-    setSubmitted(true);
-    setForm({ name: "", email: "", message: "" });
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setError("");
+  //   if (!form.name || !form.email || !form.message) {
+  //     setError("Please fill in all fields.");
+  //     return;
+  //   }
+  //   setSubmitted(true);
+  //   setForm({ name: "", email: "", message: "" });
+  // };
 
   const handleCalendlyClick = () => {
-    // Check if Calendly is loaded
     if (window.Calendly) {
       window.Calendly.initPopupWidget({
         url: 'https://calendly.com/pershantparkash',
@@ -53,9 +54,16 @@ export default function ContactForm() {
         branding: true
       });
     } else {
-      // Fallback to opening in new tab if widget fails to load
       window.open('https://calendly.com/pershantparkash', '_blank');
     }
+  };
+
+  const handleBookConsultation = () => {
+    setPaymentModalOpen(true);
+  };
+
+  const handlePaymentSuccess = () => {
+    handleCalendlyClick();
   };
 
   const contactInfo = [
@@ -90,7 +98,6 @@ export default function ContactForm() {
             flexDirection: 'column'
           }
         }}>
-          {/* Left side - Contact Info */}
           <Grid item xs={12} md={5} sx={{
             '@media (max-width: 900px)': {
               width: '100%'
@@ -102,7 +109,6 @@ export default function ContactForm() {
                 textAlign: 'left'
               }
             }}>
-              {/* Section Badge */}
               <Chip
                 label="Get In Touch"
                 sx={{
@@ -117,7 +123,6 @@ export default function ContactForm() {
                 }}
               />
 
-              {/* Main Headline */}
               <Typography
                 variant="h2"
                 component="h2"
@@ -147,7 +152,6 @@ export default function ContactForm() {
                 </Box>
               </Typography>
 
-              {/* Description */}
               <Typography
                 variant="h6"
                 sx={{
@@ -166,7 +170,6 @@ export default function ContactForm() {
                 Have a question or need urgent IT support? Fill out the form or book a consultation — our certified team will respond promptly, even on weekends.
               </Typography>
 
-              {/* Contact Information */}
               <Box sx={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -220,7 +223,6 @@ export default function ContactForm() {
                 ))}
               </Box>
 
-              {/* Calendly Button */}
               <Box sx={{ 
                 mt: 4, 
                 display: 'flex', 
@@ -230,7 +232,7 @@ export default function ContactForm() {
                 } 
               }}>
                 <Button
-                  onClick={handleCalendlyClick}
+                  onClick={handleBookConsultation}
                   variant="outlined"
                   size="large"
                   startIcon={<CalendarMonth />}
@@ -252,13 +254,12 @@ export default function ContactForm() {
                     transition: 'all 0.3s ease'
                   }}
                 >
-                  Book Consultation
+                  Book Consultation - £{consultationAmount}
                 </Button>
               </Box>
             </Box>
           </Grid>
 
-          {/* Right side - Contact Form */}
           <Grid item xs={12} md={7} sx={{
             display: 'flex',
             justifyContent: 'center',
@@ -450,6 +451,13 @@ export default function ContactForm() {
           </Grid>
         </Grid>
       </Container>
+
+      <PaymentModal
+        open={paymentModalOpen}
+        onClose={() => setPaymentModalOpen(false)}
+        amount={consultationAmount}
+        onSuccess={handlePaymentSuccess}
+      />
     </Box>
   );
 }

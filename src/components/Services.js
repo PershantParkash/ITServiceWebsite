@@ -14,6 +14,7 @@ import {
   ArrowForward,
 } from "@mui/icons-material";
 import { useState, useEffect } from "react";
+import PaymentModal from "./PaymentModal";
 
 const services = [
   {
@@ -92,14 +93,15 @@ export default function Services() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [calendlyLoaded, setCalendlyLoaded] = useState(false);
+  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
+  const [consultationAmount] = useState(30);
+
   useEffect(() => {
-    // Load Calendly CSS
     const link = document.createElement('link');
     link.href = 'https://assets.calendly.com/assets/external/widget.css';
     link.rel = 'stylesheet';
     document.head.appendChild(link);
 
-    // Load Calendly JS
     const script = document.createElement('script');
     script.src = 'https://assets.calendly.com/assets/external/widget.js';
     script.async = true;
@@ -117,11 +119,9 @@ export default function Services() {
     };
   }, []);
 
-  // Add this function to handle Calendly popup
   const handleCalendlyClick = (e) => {
     e.preventDefault();
 
-    // Check if Calendly is loaded
     if (window.Calendly && calendlyLoaded) {
       window.Calendly.initPopupWidget({
         url: 'https://calendly.com/pershantparkash',
@@ -135,6 +135,16 @@ export default function Services() {
       window.open('https://calendly.com/pershantparkash', '_blank');
     }
   };
+
+  const handleBookConsultation = () => {
+    setPaymentModalOpen(true);
+  };
+
+  const handlePaymentSuccess = () => {
+    handleCalendlyClick();
+  };
+
+
   return (
     <Box
       id="services"
@@ -459,12 +469,19 @@ export default function Services() {
               transition: 'all 0.3s ease'
             }}
             // href="#contact"
-            onClick={handleCalendlyClick}
+            // onClick={handleCalendlyClick}
+             onClick={handleBookConsultation}
           >
-            Get Consultation
+            Get Consultation - £{consultationAmount}
           </Button>
         </Box>
       </Container>
+      <PaymentModal
+        open={paymentModalOpen}
+        onClose={() => setPaymentModalOpen(false)}
+        amount={consultationAmount}
+        onSuccess={handlePaymentSuccess}
+      />
     </Box>
   );
 }
