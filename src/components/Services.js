@@ -144,7 +144,6 @@ export default function Services() {
     handleCalendlyClick();
   };
 
-
   return (
     <Box
       id="services"
@@ -216,205 +215,190 @@ export default function Services() {
           </Typography>
         </Box>
 
-        {/* Services Grid - 2x2 Layout with Center Alignment for screens ≤1200px */}
-        <Grid
-          container
-          spacing={4}
-          sx={{
-            // Center the grid on screens 1200px and below
-            justifyContent: { xs: 'center', lg: 'flex-start' },
-            // Optional: Add max-width to prevent grid from being too wide on smaller screens
-            maxWidth: { xs: '800px', lg: '100%' },
-            mx: 'auto'
-          }}
-        >
-          {services.map((service, idx) => (
-            <Grid item xs={12} sm={10} md={6} lg={6} key={service.title}>
-              <Card
+        <Box sx={{ mb: 8 }}>
+          <Grid 
+            container 
+            spacing={4} 
+            sx={{ 
+              justifyContent: 'center',
+              '@media (max-width: 599px)': {
+                justifyContent: 'center'
+              }
+            }}
+          >
+            {services.map((service, idx) => (
+              <Grid 
+                item 
+                xs={6}  
+                sm={6}  
+                md={4}  
+                key={service.title}
                 sx={{
-                  minHeight: 420,
-                  background: service.bgGradient,
-                  backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: 5,
-                  p: 4,
-                  position: 'relative',
-                  overflow: 'hidden',
-                  cursor: 'pointer',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                  '&:hover': {
-                    transform: 'translateY(-12px)',
-                    boxShadow: `0 30px 60px -12px ${service.color}30`,
-                    borderColor: `${service.color}60`,
-                    '& .service-icon': {
-                      transform: 'scale(1.15) rotate(5deg)',
-                      color: service.color,
-                    },
-                    '& .service-arrow': {
-                      transform: 'translateX(8px)',
-                      opacity: 1,
-                    },
-                    '& .service-button': {
-                      background: `linear-gradient(135deg, ${service.color} 0%, ${service.color}dd 100%)`,
-                      transform: 'translateY(-2px)',
-                      boxShadow: `0 8px 25px ${service.color}40`,
-                    }
+                  '@media (min-width: 900px)': {
+                    maxWidth: '350px',
+                    flexBasis: '350px'
                   },
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '5px',
-                    background: `linear-gradient(90deg, ${service.color} 0%, transparent 100%)`,
-                  }
+                  ...(idx === services.length - 1 && {
+                    '@media (max-width: 599px)': {
+                      gridColumn: '1 / -1',
+                      maxWidth: '300px',
+                      margin: '0 auto'
+                    }
+                  })
                 }}
               >
-                {/* Popular Badge */}
-                {service.popular && (
-                  <Box
-                    sx={{
+                <Card
+                  sx={{
+                    height: { xs: 320, sm: 420 }, 
+                    background: service.bgGradient,
+                    backdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: 3,
+                    p: { xs: 2, sm: 3 }, 
+                    position: 'relative',
+                    overflow: 'hidden',
+                    cursor: 'pointer',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    '&:hover': {
+                      transform: 'translateY(-8px)',
+                      boxShadow: `0 25px 50px -12px ${service.color}30`,
+                      borderColor: `${service.color}60`,
+                      '& .service-icon': {
+                        transform: 'scale(1.1) rotate(3deg)',
+                        color: service.color,
+                      },
+                    },
+                    '&::before': {
+                      content: '""',
                       position: 'absolute',
-                      top: 20,
-                      right: 20,
-                      background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-                      color: 'white',
-                      px: 2,
-                      py: 0.5,
-                      borderRadius: 3,
-                      fontSize: '0.8rem',
-                      fontWeight: 600,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 0.5,
-                      boxShadow: '0 4px 12px rgba(245, 158, 11, 0.4)'
-                    }}
-                  >
-                    <Star sx={{ fontSize: '0.9rem' }} />
-                    Most Popular
-                  </Box>
-                )}
-
-                <CardContent sx={{ p: 0, height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  {/* Icon */}
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: 80,
-                      height: 80,
-                      borderRadius: 4,
-                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                      mb: 3,
-                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-                    }}
-                  >
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: '4px',
+                      background: `linear-gradient(90deg, ${service.color} 0%, transparent 100%)`,
+                    }
+                  }}
+                >
+                  {service.popular && (
                     <Box
-                      className="service-icon"
                       sx={{
-                        color: '#94a3b8',
+                        position: 'absolute',
+                        top: 15,
+                        right: 15,
+                        background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                        color: 'white',
+                        px: 1.5,
+                        py: 0.5,
+                        borderRadius: 2,
+                        fontSize: '0.75rem',
+                        fontWeight: 600,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 0.5,
+                        boxShadow: '0 4px 12px rgba(245, 158, 11, 0.4)'
+                      }}
+                    >
+                      <Star sx={{ fontSize: '0.8rem' }} />
+                      Popular
+                    </Box>
+                  )}
+
+                  <CardContent sx={{ p: 0, height: '100%', display: 'flex', flexDirection: 'column' }}>
+                    {/* Icon */}
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: { xs: 50, sm: 60 },
+                        height: { xs: 50, sm: 60 },
+                        borderRadius: 3,
+                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                        mb: { xs: 2, sm: 3 },
                         transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
                       }}
                     >
-                      {service.icon}
-                    </Box>
-                  </Box>
-
-                  {/* Title */}
-                  <Typography
-                    variant="h4"
-                    component="h3"
-                    sx={{
-                      fontWeight: 700,
-                      color: '#ffffff',
-                      mb: 2,
-                      fontSize: { xs: '1.5rem', md: '1.6rem' },
-                      lineHeight: 1.3
-                    }}
-                  >
-                    {service.title}
-                  </Typography>
-
-                  {/* Description */}
-                  <Typography
-                    sx={{
-                      color: '#94a3b8',
-                      lineHeight: 1.7,
-                      mb: 4,
-                      fontSize: '1rem',
-                      flexGrow: 1
-                    }}
-                  >
-                    {service.desc}
-                  </Typography>
-
-                  {/* Features */}
-                  <Box >
-                    {service.features.map((feature, index) => (
                       <Box
-                        key={index}
+                        className="service-icon"
                         sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          mb: 1.5
+                          color: '#94a3b8',
+                          transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                          '& svg': {
+                            fontSize: { xs: '1.5rem', sm: '1.8rem' }
+                          }
                         }}
                       >
-                        <CheckCircle
+                        {service.icon}
+                      </Box>
+                    </Box>
+
+                    {/* Title */}
+                    <Typography
+                      variant="h5"
+                      component="h3"
+                      sx={{
+                        fontWeight: 700,
+                        color: '#ffffff',
+                        mb: 2,
+                        fontSize: { xs: '1.1rem', sm: '1.3rem' },
+                        lineHeight: 1.3
+                      }}
+                    >
+                      {service.title}
+                    </Typography>
+
+                    {/* Description */}
+                    <Typography
+                      sx={{
+                        color: '#94a3b8',
+                        lineHeight: 1.6,
+                        mb: { xs: 2, sm: 3 },
+                        fontSize: { xs: '0.8rem', sm: '0.9rem' },
+                        flexGrow: 1
+                      }}
+                    >
+                      {service.desc}
+                    </Typography>
+
+                    {/* Features */}
+                    <Box sx={{ mt: 'auto' }}>
+                      {service.features.map((feature, index) => (
+                        <Box
+                          key={index}
                           sx={{
-                            color: service.color,
-                            fontSize: '1.1rem',
-                            mr: 2
-                          }}
-                        />
-                        <Typography
-                          sx={{
-                            color: '#e2e8f0',
-                            fontSize: '0.95rem',
-                            fontWeight: 500
+                            display: 'flex',
+                            alignItems: 'center',
+                            mb: { xs: 1, sm: 1.2 }
                           }}
                         >
-                          {feature}
-                        </Typography>
-                      </Box>
-                    ))}
-                  </Box>
-
-                  {/* CTA Button */}
-                  {/* <Button
-                    className="service-button"
-                    variant="contained"
-                    endIcon={<ArrowForward className="service-arrow" />}
-                    sx={{
-                      alignSelf: 'flex-start',
-                      mt: 'auto',
-                      px: 4,
-                      py: 1.5,
-                      borderRadius: 3,
-                      fontWeight: 600,
-                      fontSize: '0.95rem',
-                      textTransform: 'none',
-                      background: 'rgba(255, 255, 255, 0.1)',
-                      color: '#ffffff',
-                      border: `1px solid ${service.color}40`,
-                      transition: 'all 0.3s ease',
-                      '& .service-arrow': {
-                        transition: 'all 0.3s ease',
-                        opacity: 0.8,
-                      }
-                    }}
-                  >
-                    Learn More
-                  </Button> */}
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+                          <CheckCircle
+                            sx={{
+                              color: service.color,
+                              fontSize: { xs: '0.9rem', sm: '1rem' },
+                              mr: 1.5
+                            }}
+                          />
+                          <Typography
+                            sx={{
+                              color: '#e2e8f0',
+                              fontSize: { xs: '0.75rem', sm: '0.85rem' },
+                              fontWeight: 500
+                            }}
+                          >
+                            {feature}
+                          </Typography>
+                        </Box>
+                      ))}
+                    </Box>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
 
         {/* Bottom CTA Section */}
-        <Box
+        {/* <Box
           sx={{
             textAlign: 'center',
             mt: 12,
@@ -468,20 +452,18 @@ export default function Services() {
               },
               transition: 'all 0.3s ease'
             }}
-            // href="#contact"
-            // onClick={handleCalendlyClick}
              onClick={handleBookConsultation}
           >
             Get Consultation - £{consultationAmount}
           </Button>
-        </Box>
+        </Box> */}
       </Container>
-      <PaymentModal
+      {/* <PaymentModal
         open={paymentModalOpen}
         onClose={() => setPaymentModalOpen(false)}
         amount={consultationAmount}
         onSuccess={handlePaymentSuccess}
-      />
+      /> */}
     </Box>
   );
 }

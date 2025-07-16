@@ -89,7 +89,7 @@ export default function ContactForm() {
       <Container
         maxWidth="lg"
         sx={{
-          px: { xs: 3, md: 4 },
+          px: { xs: 3, md: 3 },
           py: { xs: 4, md: 8 },
           zIndex: 1,
         }}

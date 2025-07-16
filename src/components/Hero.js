@@ -3,6 +3,7 @@
 import { Box, Typography, Button, Container, Grid, Chip } from "@mui/material";
 import { TrendingUp, Security, Apple } from "@mui/icons-material";
 import { useState, useEffect } from 'react';
+
 export default function Hero() {
   const handleSmoothScroll = (targetId) => {
     const targetElement = document.getElementById(targetId);
@@ -22,48 +23,6 @@ export default function Hero() {
     { icon: <Security />, text: "Cybersecurity Ready" },
     { icon: <Apple  />, text: "Apple Device Management" }
   ];
-
-  // const [mobileOpen, setMobileOpen] = useState(false);
-  //   const [scrolled, setScrolled] = useState(false);
-  //   const [calendlyLoaded, setCalendlyLoaded] = useState(false);
-  
-    // useEffect(() => {
-    //   const link = document.createElement('link');
-    //   link.href = 'https://assets.calendly.com/assets/external/widget.css';
-    //   link.rel = 'stylesheet';
-    //   document.head.appendChild(link);
-  
-    //   const script = document.createElement('script');
-    //   script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    //   script.async = true;
-    //   script.onload = () => setCalendlyLoaded(true);
-    //   document.body.appendChild(script);
-  
-    //   return () => {
-    //     if (document.head.contains(link)) {
-    //       document.head.removeChild(link);
-    //     }
-    //     if (document.body.contains(script)) {
-    //       document.body.removeChild(script);
-    //     }
-    //   };
-    // }, []);
-  
-    // const handleCalendlyClick = (e) => {
-    //   e.preventDefault();
-      
-    //   if (window.Calendly && calendlyLoaded) {
-    //     window.Calendly.initPopupWidget({
-    //       url: 'https://calendly.com/pershantparkash',
-    //       text: 'Schedule time with me',
-    //       color: '#3b82f6',
-    //       textColor: '#ffffff',
-    //       branding: true
-    //     });
-    //   } else {
-    //     window.open('https://calendly.com/pershantparkash', '_blank');
-    //   }
-    // };
 
   return (
     <Box 
@@ -88,8 +47,8 @@ export default function Hero() {
         },
         py: 12,
       }}>
-      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Grid container spacing={4} alignItems="center" justifyContent="center">
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1,  }}>
+        <Grid container spacing={4} alignItems="center" >
           <Grid 
             item 
             xs={12}
@@ -105,7 +64,9 @@ export default function Hero() {
                 md: 'center',
                 lg: 'flex-start',
                 xl: 'flex-start'
-              }
+              },
+              width: '100%',
+              height: '100%'
             }}
           >
             <Box sx={{ 
@@ -304,20 +265,27 @@ export default function Hero() {
           </Grid>
           
           {/* Right side - Visual Element - Only shows above 1200px */}
-          <Grid 
+          {/* <Grid 
             item 
             xs={12} 
             md={0} 
             lg={4} 
             xl={4}
             sx={{
-              display: { xs: 'none', sm: 'none', md: 'none', lg: 'block', xl: 'block' }
+              display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex', xl: 'flex' },
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden',
+              position: 'relative'
             }}
           >
             <Box sx={{ 
               position: 'relative',
               height: { lg: '400px' },
               width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               '&::before': {
                 content: '""',
                 position: 'absolute',
@@ -337,12 +305,10 @@ export default function Hero() {
               }
             }}>
               <Box sx={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
+                position: 'relative',
                 width: { lg: '200px' },
                 height: { lg: '200px' },
+                maxWidth: '100%',
                 border: '2px solid rgba(59, 130, 246, 0.3)',
                 borderRadius: '20px',
                 display: 'flex',
@@ -363,7 +329,7 @@ export default function Hero() {
                 </Typography>
               </Box>
             </Box>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </Box>

@@ -5,6 +5,7 @@ import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
 import Header from "@/components/Header";
 import Testimonial from "@/components/Testimonial";
+import ConsultationPricingComponent from "@/components/ConsultationPricing"
 
 export default function Home() {
   return (
@@ -12,9 +13,10 @@ export default function Home() {
       <Header />
       <Hero />
       <Services />
+      <ConsultationPricingComponent />
+      <Testimonial />
+      <ContactForm />  
       <Features />
-      <Testimonial/>
-      <ContactForm />
       <Footer />
     </>
   );

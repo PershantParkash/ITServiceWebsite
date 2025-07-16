@@ -212,7 +212,7 @@ export default function Features() {
                   height: 120,
                   backdropFilter: 'blur(10px)',
                   border: '1px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: 4,
+                  borderRadius: 2,
                   transition: 'all 0.4s ease',
                   cursor: 'pointer',
                   position: 'relative',
