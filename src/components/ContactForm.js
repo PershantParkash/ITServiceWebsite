@@ -10,7 +10,7 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const [paymentModalOpen, setPaymentModalOpen] = useState(false);
-  const [consultationAmount] = useState(30); // £50 consultation fee
+  const [consultationAmount] = useState(30);
 
   useEffect(() => {
     const link = document.createElement('link');
@@ -32,17 +32,6 @@ export default function ContactForm() {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   setError("");
-  //   if (!form.name || !form.email || !form.message) {
-  //     setError("Please fill in all fields.");
-  //     return;
-  //   }
-  //   setSubmitted(true);
-  //   setForm({ name: "", email: "", message: "" });
-  // };
 
   const handleCalendlyClick = () => {
     if (window.Calendly) {
@@ -72,6 +61,9 @@ export default function ContactForm() {
     { icon: <Phone />, label: "Phone", value: "07424 665990" },
   ];
 
+
+
+
   return (
     <Box
       id="contact"
@@ -92,183 +84,188 @@ export default function ContactForm() {
         },
       }}
     >
-      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-        <Grid container spacing={8} alignItems="center" justifyContent="center" sx={{
-          '@media (max-width: 900px)': {
-            flexDirection: 'column'
-          }
-        }}>
+
+
+      <Container
+        maxWidth="lg"
+        sx={{
+          px: { xs: 3, md: 4 },
+          py: { xs: 4, md: 8 },
+          zIndex: 1,
+        }}
+      >
+        <Grid
+          container
+          spacing={4}
+          alignItems="flex-start"
+
+          sx={{
+            boxSizing: 'border-box',
+            flexDirection: { xs: 'column', md: 'row' },
+            alignItems: 'stretch',
+          }}
+        >
           <Grid item xs={12} md={5} sx={{
-            '@media (max-width: 900px)': {
-              width: '100%'
-            }
+            flex: 1,
+             alignItems: { xs: 'center', md: 'flex-start' },
+              textAlign: { xs: 'center', md: 'left' },
           }}>
+            <Chip
+              label="Get In Touch"
+              sx={{
+                mb: 3,
+                px: 2,
+                py: 1,
+                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                color: '#3b82f6',
+                border: '1px solid rgba(59, 130, 246, 0.2)',
+                fontWeight: 500,
+                fontSize: '0.9rem'
+              }}
+            />
+
+            <Typography
+              variant="h2"
+              component="h2"
+              gutterBottom
+              sx={{
+                fontWeight: 800,
+                color: '#ffffff',
+                fontSize: { xs: '2rem', md: '2.5rem' },
+                lineHeight: 1.2,
+                letterSpacing: '-0.02em',
+                mb: 3,
+                background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              Get In Touch With
+              <Box component="span" sx={{
+                display: 'block',
+                background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>
+                Our Experts
+              </Box>
+            </Typography>
+
+            <Typography
+              variant="h6"
+              sx={{
+                color: '#94a3b8',
+                fontWeight: 400,
+                lineHeight: 1.6,
+                mb: 4,
+                fontSize: { xs: '1rem', md: '1.1rem' },
+                // maxWidth: '400px',
+                mx: 'auto',
+                '@media (min-width: 901px)': {
+                  mx: 0
+                }
+              }}
+            >
+              Have a question or need urgent IT support? Fill out the form or book a consultation — our certified team will respond promptly, even on weekends.
+            </Typography>
+
             <Box sx={{
-              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 3,
+              alignItems: 'center',
+
               '@media (min-width: 901px)': {
-                textAlign: 'left'
+                alignItems: 'flex-start'
               }
             }}>
-              <Chip
-                label="Get In Touch"
-                sx={{
-                  mb: 3,
-                  px: 2,
-                  py: 1,
-                  backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                  color: '#3b82f6',
-                  border: '1px solid rgba(59, 130, 246, 0.2)',
-                  fontWeight: 500,
-                  fontSize: '0.9rem'
-                }}
-              />
-
-              <Typography
-                variant="h2"
-                component="h2"
-                gutterBottom
-                sx={{
-                  fontWeight: 800,
-                  color: '#ffffff',
-                  fontSize: { xs: '2rem', md: '2.5rem' },
-                  lineHeight: 1.2,
-                  letterSpacing: '-0.02em',
-                  mb: 3,
-                  background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                Get In Touch With
-                <Box component="span" sx={{
-                  display: 'block',
-                  background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}>
-                  Our Experts
-                </Box>
-              </Typography>
-
-              <Typography
-                variant="h6"
-                sx={{
-                  color: '#94a3b8',
-                  fontWeight: 400,
-                  lineHeight: 1.6,
-                  mb: 4,
-                  fontSize: { xs: '1rem', md: '1.1rem' },
-                  maxWidth: '400px',
-                  mx: 'auto',
-                  '@media (min-width: 901px)': {
-                    mx: 0
-                  }
-                }}
-              >
-                Have a question or need urgent IT support? Fill out the form or book a consultation — our certified team will respond promptly, even on weekends.
-              </Typography>
-
-              <Box sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 3,
-                alignItems: 'center',
-                '@media (min-width: 901px)': {
-                  alignItems: 'flex-start'
-                }
-              }}>
-                {contactInfo.map((item, index) => (
-                  <Box
-                    key={index}
-                    sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 2,
-                      justifyContent: 'center',
-                      '@media (min-width: 901px)': {
-                        justifyContent: 'flex-start'
-                      }
-                    }}
-                  >
-                    <Box sx={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: '12px',
-                      background: 'rgba(59, 130, 246, 0.1)',
-                      border: '1px solid rgba(59, 130, 246, 0.2)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      '& svg': {
-                        color: '#3b82f6',
-                        fontSize: '1.2rem'
-                      },
-                      '@media (max-width: 900px)': {
-                        display: 'none'
-                      }
-                    }}>
-                      {item.icon}
-                    </Box>
-                    <Box>
-                      <Typography variant="body2" sx={{ color: '#94a3b8', fontWeight: 500 }}>
-                        {item.label}
-                      </Typography>
-                      <Typography variant="body1" sx={{ color: '#e2e8f0', fontWeight: 600 }}>
-                        {item.value}
-                      </Typography>
-                    </Box>
-                  </Box>
-                ))}
-              </Box>
-
-              <Box sx={{ 
-                mt: 4, 
-                display: 'flex', 
-                justifyContent: 'center', 
-                '@media (min-width: 901px)': { 
-                  justifyContent: 'flex-start' 
-                } 
-              }}>
-                <Button
-                  onClick={handleBookConsultation}
-                  variant="outlined"
-                  size="large"
-                  startIcon={<CalendarMonth />}
+              {contactInfo.map((item, index) => (
+                <Box
+                  key={index}
                   sx={{
-                    px: 3,
-                    py: 1.5,
-                    fontWeight: 600,
-                    fontSize: '1rem',
-                    borderRadius: '12px',
-                    border: '1px solid rgba(139, 92, 246, 0.3)',
-                    color: '#8b5cf6',
-                    backgroundColor: 'rgba(139, 92, 246, 0.1)',
-                    textTransform: 'none',
-                    '&:hover': {
-                      backgroundColor: 'rgba(139, 92, 246, 0.2)',
-                      border: '1px solid rgba(139, 92, 246, 0.5)',
-                      transform: 'translateY(-2px)',
-                    },
-                    transition: 'all 0.3s ease'
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 2,
+                    justifyContent: 'center',
+
+                    '@media (min-width: 901px)': {
+                      justifyContent: 'flex-start'
+                    }
                   }}
                 >
-                  Book Consultation - £{consultationAmount}
-                </Button>
-              </Box>
+                  <Box sx={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: '12px',
+                    background: 'rgba(59, 130, 246, 0.1)',
+                    border: '1px solid rgba(59, 130, 246, 0.2)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    '& svg': {
+                      color: '#3b82f6',
+                      fontSize: '1.2rem'
+                    },
+                    '@media (max-width: 900px)': {
+                      display: 'none'
+                    }
+                  }}>
+                    {item.icon}
+                  </Box>
+                  <Box>
+                    <Typography variant="body2" sx={{ color: '#94a3b8', fontWeight: 500 }}>
+                      {item.label}
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: '#e2e8f0', fontWeight: 600 }}>
+                      {item.value}
+                    </Typography>
+                  </Box>
+                </Box>
+              ))}
+            </Box>
+
+            <Box sx={{
+              mt: 4,
+              display: 'flex',
+              justifyContent: 'center',
+              '@media (min-width: 901px)': {
+                justifyContent: 'flex-start'
+              }
+            }}>
+              <Button
+                onClick={handleBookConsultation}
+                variant="outlined"
+                size="large"
+                startIcon={<CalendarMonth />}
+                sx={{
+                  px: 3,
+                  py: 1.5,
+                  fontWeight: 600,
+                  fontSize: '1rem',
+                  borderRadius: '12px',
+                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  color: '#8b5cf6',
+                  backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                  textTransform: 'none',
+                  '&:hover': {
+                    backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                    border: '1px solid rgba(139, 92, 246, 0.5)',
+                    transform: 'translateY(-2px)',
+                  },
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                Book Consultation - £{consultationAmount}
+              </Button>
             </Box>
           </Grid>
 
+
           <Grid item xs={12} md={7} sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            '@media (min-width: 901px)': {
-              justifyContent: 'flex-start'
-            },
-            '@media (max-width: 900px)': {
-              width: '100%'
-            }
+            flex: 0.75,
+            my: "auto"
           }}>
             <Box sx={{
               backgroundColor: 'rgba(255, 255, 255, 0.02)',
@@ -451,6 +448,10 @@ export default function ContactForm() {
           </Grid>
         </Grid>
       </Container>
+
+
+
+
 
       <PaymentModal
         open={paymentModalOpen}
