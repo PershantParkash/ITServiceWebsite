@@ -618,8 +618,9 @@ export default function Header() {
               <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2 }}>
                 <Button
                   variant="contained"
-                  // onClick={handleCalendlyClick}
-                   onClick={handleBookConsultation}
+                  onClick={handleCalendlyClick}
+                  //  onClick={handleBookConsultation}
+              // onClick={() => handleSmoothScroll("#pricing")}
                   sx={{ 
                     px: 3, 
                     py: 1,

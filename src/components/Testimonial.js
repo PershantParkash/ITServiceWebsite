@@ -66,6 +66,17 @@ export default function TestimonialComponent() {
     ));
   };
 
+  const cardStyles = {
+  width: 200,
+  height: 120,
+  textAlign: 'center',
+  p: 3,
+  backgroundColor: 'rgba(255, 255, 255, 0.02)',
+  backdropFilter: 'blur(10px)',
+  border: '1px solid rgba(255, 255, 255, 0.1)',
+  borderRadius: '16px',
+};
+
   return (
     <Box 
       id="testimonials" 
@@ -349,132 +360,108 @@ export default function TestimonialComponent() {
         </Box>
 
         {/* Stats Section */}
-        <Grid container spacing={4} sx={{ mt: 8,justifyContent: 'center'  }}>
-          <Grid item xs={12} sm={6} md={3}>
-            <Box sx={{ 
-              textAlign: 'center',
-              p: 3,
-              backgroundColor: 'rgba(255, 255, 255, 0.02)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              borderRadius: '16px',
-            }}>
-              <Typography 
-                variant="h3" 
-                sx={{ 
-                  color: '#3b82f6', 
-                  fontWeight: 800,
-                  fontSize: '2rem',
-                  mb: 1
-                }}
-              >
-                500+
-              </Typography>
-              <Typography 
-                variant="body1" 
-                sx={{ 
-                  color: '#94a3b8',
-                  fontWeight: 500
-                }}
-              >
-                Happy Clients
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Box sx={{ 
-              textAlign: 'center',
-              p: 3,
-              backgroundColor: 'rgba(255, 255, 255, 0.02)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              borderRadius: '16px',
-            }}>
-              <Typography 
-                variant="h3" 
-                sx={{ 
-                  color: '#8b5cf6', 
-                  fontWeight: 800,
-                  fontSize: '2rem',
-                  mb: 1
-                }}
-              >
-                99.9%
-              </Typography>
-              <Typography 
-                variant="body1" 
-                sx={{ 
-                  color: '#94a3b8',
-                  fontWeight: 500
-                }}
-              >
-                Uptime Rate
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Box sx={{ 
-              textAlign: 'center',
-              p: 3,
-              backgroundColor: 'rgba(255, 255, 255, 0.02)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              borderRadius: '16px',
-            }}>
-              <Typography 
-                variant="h3" 
-                sx={{ 
-                  color: '#22c55e', 
-                  fontWeight: 800,
-                  fontSize: '2rem',
-                  mb: 1
-                }}
-              >
-                24/7
-              </Typography>
-              <Typography 
-                variant="body1" 
-                sx={{ 
-                  color: '#94a3b8',
-                  fontWeight: 500
-                }}
-              >
-                Support Available
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Box sx={{ 
-              textAlign: 'center',
-              p: 3,
-              backgroundColor: 'rgba(255, 255, 255, 0.02)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              borderRadius: '16px',
-            }}>
-              <Typography 
-                variant="h3" 
-                sx={{ 
-                  color: '#f59e0b', 
-                  fontWeight: 800,
-                  fontSize: '2rem',
-                  mb: 1
-                }}
-              >
-                10+
-              </Typography>
-              <Typography 
-                variant="body1" 
-                sx={{ 
-                  color: '#94a3b8',
-                  fontWeight: 500
-                }}
-              >
-                Years Experience
-              </Typography>
-            </Box>
-          </Grid>
-        </Grid>
+        
+<Grid container spacing={4} sx={{ mt: 8, justifyContent: 'center' }}>
+  <Grid item xs={12} sm={6} md={3}>
+    <Box sx={cardStyles}>
+      <Typography
+        variant="h3"
+        sx={{
+          color: '#3b82f6',
+          fontWeight: 800,
+          fontSize: '2rem',
+          mb: 1,
+        }}
+      >
+        500+
+      </Typography>
+      <Typography
+        variant="body1"
+        sx={{
+          color: '#94a3b8',
+          fontWeight: 500,
+        }}
+      >
+        Happy Clients
+      </Typography>
+    </Box>
+  </Grid>
+
+  <Grid item xs={12} sm={6} md={3}>
+    <Box sx={cardStyles}>
+      <Typography
+        variant="h3"
+        sx={{
+          color: '#8b5cf6',
+          fontWeight: 800,
+          fontSize: '2rem',
+          mb: 1,
+        }}
+      >
+        99.9%
+      </Typography>
+      <Typography
+        variant="body1"
+        sx={{
+          color: '#94a3b8',
+          fontWeight: 500,
+        }}
+      >
+        Uptime Rate
+      </Typography>
+    </Box>
+  </Grid>
+
+  <Grid item xs={12} sm={6} md={3}>
+    <Box sx={cardStyles}>
+      <Typography
+        variant="h3"
+        sx={{
+          color: '#22c55e',
+          fontWeight: 800,
+          fontSize: '2rem',
+          mb: 1,
+        }}
+      >
+        24/7
+      </Typography>
+      <Typography
+        variant="body1"
+        sx={{
+          color: '#94a3b8',
+          fontWeight: 500,
+        }}
+      >
+        Support Available
+      </Typography>
+    </Box>
+  </Grid>
+
+  <Grid item xs={12} sm={6} md={3}>
+    <Box sx={cardStyles}>
+      <Typography
+        variant="h3"
+        sx={{
+          color: '#f59e0b',
+          fontWeight: 800,
+          fontSize: '2rem',
+          mb: 1,
+        }}
+      >
+        10+
+      </Typography>
+      <Typography
+        variant="body1"
+        sx={{
+          color: '#94a3b8',
+          fontWeight: 500,
+        }}
+      >
+        Years Experience
+      </Typography>
+    </Box>
+  </Grid>
+</Grid>
       </Container>
     </Box>
   );
