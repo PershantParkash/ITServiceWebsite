@@ -264,7 +264,8 @@ export default function ConsultationPricingComponent() {
                                         backdropFilter: 'blur(20px)',
                                         border: plan.popular ? `2px solid ${plan.color}60` : '1px solid rgba(255, 255, 255, 0.1)',
                                         borderRadius: 3,
-                                        p: { xs: 2, sm: 3 },
+                                        px: { xs: 2, sm: 3 },
+                                        py: { xs: 1, sm: 1 },
                                         position: 'relative',
                                         overflow: 'hidden',
                                         cursor: 'pointer',
@@ -330,6 +331,7 @@ export default function ConsultationPricingComponent() {
                                                 display: 'flex',
                                                 alignItems: 'center',
                                                 justifyContent: 'center',
+                                                mt:2,
                                                 width: { xs: 70, sm: 80 },
                                                 height: { xs: 70, sm: 80 },
                                                 borderRadius: '50%',
@@ -344,6 +346,7 @@ export default function ConsultationPricingComponent() {
                                                 className="service-icon"
                                                 sx={{
                                                     color: plan.color,
+                                                 
                                                     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                                                     '& svg': {
                                                         fontSize: { xs: '2rem', sm: '2.2rem' }
@@ -427,7 +430,7 @@ export default function ConsultationPricingComponent() {
 
                                         <Box
                                             sx={{
-                                                mb: 4,
+                                                mb: 2,
                                                 minHeight: '200px',
                                                 display: 'flex',
                                                 flexDirection: 'column',

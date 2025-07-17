@@ -573,10 +573,21 @@ export default function Header() {
                       fontSize: '1.1rem'
                     }}
                   >
-                    WIZ
+                    WeekendItWiz
                   </Typography>
                 </Box>
-                <Typography 
+                 {/* <img
+                    src="/logo.png"
+                    alt="Logo"
+                    style={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: '10px',
+                      objectFit: 'cover',
+                      display: 'block',
+                    }}
+                  /> */}
+                {/* <Typography 
                   variant="h6" 
                   component="h1" 
                   sx={{ 
@@ -588,7 +599,7 @@ export default function Header() {
                   }}
                 >
                   WeekendItWiz
-                </Typography>
+                </Typography> */}
               </Box>
 
               {/* Desktop Navigation */}
