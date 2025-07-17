@@ -234,17 +234,18 @@ export default function Services() {
                 md={4}  
                 key={service.title}
                 sx={{
-                  '@media (min-width: 900px)': {
+                  '@media (min-width: 500px)': {
                     maxWidth: '350px',
                     flexBasis: '350px'
                   },
-                  ...(idx === services.length - 1 && {
-                    '@media (max-width: 599px)': {
-                      gridColumn: '1 / -1',
-                      maxWidth: '300px',
-                      margin: '0 auto'
-                    }
-                  })
+                  // ...(idx === services.length - 1 && {
+                  //   '@media (max-width: 599px)': {
+                  //     gridColumn: '1 / -1',
+                  //     maxWidth: '300px',
+                  //     margin: '0 auto'
+                  //   }
+                  // })
+                  
                 }}
               >
                 <Card

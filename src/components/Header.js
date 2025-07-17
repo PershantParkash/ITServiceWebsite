@@ -495,7 +495,7 @@ export default function Header() {
               },
               transition: 'all 0.3s ease'
             }}
-            onClick={handleBookConsultation}
+            onClick={() => handleSmoothScroll("pricing")}
           >
             Get Consultation
           </Button>
@@ -547,9 +547,13 @@ export default function Header() {
           }}
         >
           <Container maxWidth="lg">
-            <Toolbar sx={{ justifyContent: 'space-between', py: 2 }}>
+            <Toolbar sx={{ justifyContent: 'space-between', 
+            py: 2,
+             }}>
               {/* Logo */}
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center',
+               gap: 2
+                }}>
                 <Box sx={{
                   // width: 40,
                   // height: 40,

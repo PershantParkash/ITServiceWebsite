@@ -26,10 +26,14 @@ import {
     CalendarMonth
 } from "@mui/icons-material";
 import PaymentModal from './PaymentModal'; // Import your payment modal
+import MeetingTypeModal from './MeetingTypeModal';
 
 export default function ConsultationPricingComponent() {
     const [paymentModalOpen, setPaymentModalOpen] = useState(false);
     const [selectedPlan, setSelectedPlan] = useState(null);
+    const [meetingTypeModalOpen, setMeetingTypeModalOpen] = useState(false);
+    const [pendingPlan, setPendingPlan] = useState(null);
+    const [meetingType, setMeetingType] = useState(null);
 
     const pricingPlans = [
         {
@@ -41,10 +45,10 @@ export default function ConsultationPricingComponent() {
             popular: false,
             description: "Perfect for initial consultation and basic questions",
             features: [
-                "Initial IT assessment",
                 "Basic recommendations",
+                "Initial IT assessment",
+                "Resource sharing",
                 "Q&A session",
-                "Resource sharing"
             ],
             icon: <AccessTime sx={{ fontSize: '2rem' }} />,
             color: "#22c55e",
@@ -59,10 +63,10 @@ export default function ConsultationPricingComponent() {
             popular: false,
             description: "Comprehensive consultation for specific IT challenges",
             features: [
-                "Detailed system analysis",
+                "Follow-up recommendations",
                 "Custom solution planning",
                 "Implementation roadmap",
-                "Follow-up recommendations",
+                "Detailed system analysis",
                 "Priority email support"
             ],
             icon: <TrendingUp sx={{ fontSize: '2rem' }} />,
@@ -78,12 +82,14 @@ export default function ConsultationPricingComponent() {
             popular: false,
             description: "Full-scale consultation with detailed project planning",
             features: [
-                "Complete infrastructure review",
-                "Strategic IT planning",
                 "Detailed implementation timeline",
+                "Complete infrastructure review",
+                "30-day follow-up support",
                 "Cost-benefit analysis",
                 "Security assessment",
-                "30-day follow-up support"
+                "Strategic IT planning",
+
+
             ],
             icon: <Security sx={{ fontSize: '2rem' }} />,
             color: "#8b5cf6",
@@ -92,21 +98,33 @@ export default function ConsultationPricingComponent() {
     ];
 
     const handleBookConsultation = (plan) => {
-        if (plan.price === 0) {
-            // Redirect to 15-minute Calendly booking for free consultation
-            window.open('https://calendly.com/pershantparkash/15-minute-meeting?month=2025-07', '_blank');
+        setPendingPlan(plan);
+        setMeetingTypeModalOpen(true);
+    };
+
+    const handleMeetingTypeSelect = (type) => {
+        setMeetingTypeModalOpen(false);
+        if (!pendingPlan) return;
+        if (pendingPlan.price === 0) {
+            // Free plan: open correct Calendly link
+            if (type === 'online') {
+                window.open('https://calendly.com/pershantparkash/15-minute-online-meeting', '_blank');
+            } else {
+                window.open('https://calendly.com/pershantparkash/15-minute-meeting', '_blank');
+            }
+            setPendingPlan(null);
         } else {
-            // Open payment modal for paid consultations
-            setSelectedPlan(plan);
+            // Paid plan: open PaymentModal with meetingType
+            setSelectedPlan({ ...pendingPlan, meetingType: type });
             setPaymentModalOpen(true);
+            setPendingPlan(null);
         }
     };
 
     const handlePaymentSuccess = () => {
         setPaymentModalOpen(false);
         setSelectedPlan(null);
-        // Handle successful payment (e.g., redirect to booking confirmation)
-        console.log('Payment successful');
+        // Optionally: show a success message or redirect
     };
 
     return (
@@ -213,10 +231,10 @@ export default function ConsultationPricingComponent() {
 
                 {/* Enhanced Pricing Cards with Beautiful Design */}
                 <Box sx={{ mb: 8 }}>
-                    <Grid 
-                        container 
-                        spacing={4} 
-                        sx={{ 
+                    <Grid
+                        container
+                        spacing={4}
+                        sx={{
                             justifyContent: 'center',
                             '@media (max-width: 599px)': {
                                 justifyContent: 'center'
@@ -224,11 +242,11 @@ export default function ConsultationPricingComponent() {
                         }}
                     >
                         {pricingPlans.map((plan, idx) => (
-                            <Grid 
-                                item 
-                                xs={12}  
-                                sm={6}  
-                                md={4}  
+                            <Grid
+                                item
+                                xs={12}
+                                sm={6}
+                                md={4}
                                 key={plan.name}
                                 sx={{
                                     '@media (min-width: 900px)': {
@@ -246,7 +264,7 @@ export default function ConsultationPricingComponent() {
                                         backdropFilter: 'blur(20px)',
                                         border: plan.popular ? `2px solid ${plan.color}60` : '1px solid rgba(255, 255, 255, 0.1)',
                                         borderRadius: 3,
-                                        p: { xs: 2, sm: 3 }, 
+                                        p: { xs: 2, sm: 3 },
                                         position: 'relative',
                                         overflow: 'hidden',
                                         cursor: 'pointer',
@@ -305,7 +323,7 @@ export default function ConsultationPricingComponent() {
                                         </Box>
                                     )}
 
-                                    <CardContent sx={{ p: 0, height: '100%', display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
+                                    <CardContent sx={{ p: 0, height: '100%', display: 'flex', flexDirection: 'column', textAlign: 'center', alignItems: 'center', }}>
                                         {/* Icon */}
                                         <Box
                                             sx={{
@@ -405,97 +423,112 @@ export default function ConsultationPricingComponent() {
                                         </Typography>
 
                                         {/* Features - Fixed height container */}
-                                        <Box 
-                                            sx={{ 
+
+
+                                        <Box
+                                            sx={{
                                                 mb: 4,
-                                                minHeight: '200px', // Fixed height to align all features
+                                                minHeight: '200px',
                                                 display: 'flex',
                                                 flexDirection: 'column',
-                                                justifyContent: 'flex-start'
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
                                             }}
                                         >
-                                            {plan.features.map((feature, index) => (
-                                                <Box
-                                                    key={index}
-                                                    sx={{
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        mb: 1.5,
-                                                        justifyContent: 'flex-start'
-                                                    }}
-                                                >
-                                                    <CheckCircle
+                                            <Box
+                                                sx={{
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    alignItems: 'flex-start',
+                                                    width: '100%',
+                                                    maxWidth: '280px',
+                                                }}
+                                            >
+                                                {plan.features.map((feature, index) => (
+                                                    <Box
+                                                        key={index}
                                                         sx={{
-                                                            color: plan.color,
-                                                            fontSize: '1.1rem',
-                                                            mr: 1.5,
-                                                            flexShrink: 0
-                                                        }}
-                                                    />
-                                                    <Typography
-                                                        sx={{
-                                                            color: '#e2e8f0',
-                                                            fontSize: { xs: '0.85rem', sm: '0.9rem' },
-                                                            fontWeight: 500,
-                                                            textAlign: 'left'
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            mb: 1.5,
                                                         }}
                                                     >
-                                                        {feature}
-                                                    </Typography>
-                                                </Box>
-                                            ))}
+                                                        <CheckCircle
+                                                            sx={{
+                                                                color: plan.color,
+                                                                fontSize: '1.1rem',
+                                                                mr: 1.5,
+                                                                flexShrink: 0
+                                                            }}
+                                                        />
+                                                        <Typography
+                                                            sx={{
+                                                                color: '#e2e8f0',
+                                                                fontSize: { xs: '0.85rem', sm: '0.9rem' },
+                                                                fontWeight: 500,
+                                                                textAlign: 'left'
+                                                            }}
+                                                        >
+                                                            {feature}
+                                                        </Typography>
+                                                    </Box>
+                                                ))}
+                                            </Box>
                                         </Box>
 
+
                                         {/* Enhanced CTA Button */}
-                                        <Box sx={{ mt: 'auto' }}>
-                                            <Button
-                                                fullWidth
-                                                variant="contained"
-                                                className="cta-button"
-                                                onClick={() => handleBookConsultation(plan)}
+                                        <Box sx={{ mt: 'auto', width: '100%' }}>
+                                            <Box
                                                 sx={{
-                                                    py: 2.5,
-                                                    px: 3,
-                                                    background: plan.popular
-                                                        ? `linear-gradient(135deg, ${plan.color} 0%, ${plan.color}dd 100%)`
-                                                        : 'rgba(255, 255, 255, 0.08)',
-                                                    color: plan.popular ? 'white' : '#e2e8f0',
-                                                    border: plan.popular ? 'none' : `1px solid ${plan.color}40`,
-                                                    borderRadius: '16px',
-                                                    fontSize: '1rem',
-                                                    fontWeight: 600,
-                                                    textTransform: 'none',
-                                                    transition: 'all 0.3s ease',
-                                                    boxShadow: plan.popular ? `0 8px 24px ${plan.color}30` : 'none',
-                                                    position: 'relative',
+                                                    width: '100%',
+                                                    borderRadius: '20px',
                                                     overflow: 'hidden',
-                                                    '&::before': {
-                                                        content: '""',
-                                                        position: 'absolute',
-                                                        top: 0,
-                                                        // left: '-100%',
+                                                    position: 'relative',
+                                                    background: plan.popular
+                                                        ? `linear-gradient(135deg, ${plan.color} 0%, ${plan.color}cc 100%)`
+                                                        : 'rgba(255, 255, 255, 0.05)',
+                                                    border: plan.popular ? 'none' : `1px solid ${plan.color}40`,
+                                                    boxShadow: plan.popular ? `0 8px 28px ${plan.color}30` : '0 4px 12px rgba(255,255,255,0.08)',
+                                                    transition: 'all 0.3s ease',
+                                                    '&:hover': {
+                                                        boxShadow: `0 12px 36px ${plan.color}40`,
+                                                        transform: 'translateY(-2px)',
+                                                    },
+                                                }}
+                                            >
+                                                <Button
+                                                    onClick={() => handleBookConsultation(plan)}
+                                                    fullWidth
+                                                    variant="text"
+                                                    disableElevation
+                                                    sx={{
+                                                        py: 2.5,
+                                                        px: 3,
                                                         width: '100%',
                                                         height: '100%',
-                                                        background: `linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)`,
-                                                        // transition: 'left 0.6s',
-                                                    },
-                                                    // '&:hover::before': {
-                                                    //     left: '100%',
-                                                    // },
-                                                    '&:hover': {
-                                                        // transform: 'translateY(-2px)',
-                                                        boxShadow: `0 12px 32px ${plan.color}40`,
-                                                    }
-                                                }}
-                                                startIcon={<CalendarMonth />}
-                                                endIcon={<ArrowForward 
-                                                    // sx={{ transition: 'transform 0.3s ease' }}
-                                                     />
-                                                }
-                                            >
-                                                {plan.price === 0 ? 'Book Free Session' : 'Book Consultation'}
-                                            </Button>
+                                                        color: plan.popular ? '#ffffff' : '#e2e8f0',
+                                                        fontWeight: 700,
+                                                        fontSize: '1rem',
+                                                        textTransform: 'none',
+                                                        display: 'flex',
+                                                        justifyContent: 'space-between',
+                                                        alignItems: 'center',
+                                                        background: 'transparent',
+                                                        '&:hover': {
+                                                            background: 'transparent',
+                                                        }
+                                                    }}
+                                                >
+                                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                                                        <CalendarMonth sx={{ fontSize: '1.2rem' }} />
+                                                        {plan.price === 0 ? 'Book Free Session' : 'Book Consultation'}
+                                                    </Box>
+                                                    <ArrowForward sx={{ fontSize: '1.3rem', transition: 'transform 0.3s ease' }} />
+                                                </Button>
+                                            </Box>
                                         </Box>
+
                                     </CardContent>
                                 </Card>
                             </Grid>
@@ -510,6 +543,11 @@ export default function ConsultationPricingComponent() {
                 onClose={() => setPaymentModalOpen(false)}
                 planDetails={selectedPlan}
                 onSuccess={handlePaymentSuccess}
+            />
+            <MeetingTypeModal
+                open={meetingTypeModalOpen}
+                onClose={() => setMeetingTypeModalOpen(false)}
+                onSelect={handleMeetingTypeSelect}
             />
         </Box>
     );
