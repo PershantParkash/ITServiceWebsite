@@ -108,9 +108,9 @@ export default function ConsultationPricingComponent() {
         if (pendingPlan.price === 0) {
             // Free plan: open correct Calendly link
             if (type === 'online') {
-                window.open('https://calendly.com/pershantparkash/15-minute-online-meeting', '_blank');
-            } else {
                 window.open('https://calendly.com/pershantparkash/15-minute-meeting', '_blank');
+            } else {
+                window.open('https://calendly.com/pershantparkash/15-minute-meeting-1', '_blank');
             }
             setPendingPlan(null);
         } else {

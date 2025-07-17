@@ -12,11 +12,11 @@ export default function Home() {
     <>
       <Header />
       <Hero />
-      <Services />
-      <ConsultationPricingComponent />
-      <Testimonial />
-      <ContactForm />  
       <Features />
+      <Services />
+      <Testimonial />
+      <ConsultationPricingComponent />
+      <ContactForm />  
       <Footer />
     </>
   );

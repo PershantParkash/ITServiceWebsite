@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Premium IT Services | IT Support, Consulting, Azure, Premium Support",
+  title: "WeekendItWiz",
   description: "Professional IT services provider offering IT Support, Consulting, Azure Services, and Premium Support. Modern, reliable, and client-focused solutions.",
 };
 
@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
         <meta name="description" content="Professional IT services provider offering IT Support, Consulting, Azure Services, and Premium Support. Modern, reliable, and client-focused solutions." />
         <meta name="keywords" content="IT Services, IT Support, IT Consulting, Azure, Premium Support, Tech Solutions" />
         <meta name="author" content="Premium IT Services" />
-        <title>Premium IT Services | IT Support, Consulting, Azure, Premium Support</title>
+        <title>WeekendItWiz | Premium IT Services | IT Support, Consulting, Azure, Premium Support</title>
       </Head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ThemeRegistry>

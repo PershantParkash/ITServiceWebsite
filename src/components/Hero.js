@@ -125,7 +125,7 @@ export default function Hero() {
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
                 }}>
-                  Available Every Weekend
+                  Available 24/7, Whenever You Need 
                 </Box>
               </Typography>
               

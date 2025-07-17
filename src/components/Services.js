@@ -90,59 +90,59 @@ const services = [
 ];
 
 export default function Services() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [calendlyLoaded, setCalendlyLoaded] = useState(false);
-  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
-  const [consultationAmount] = useState(30);
+  // const [mobileOpen, setMobileOpen] = useState(false);
+  // const [scrolled, setScrolled] = useState(false);
+  // const [calendlyLoaded, setCalendlyLoaded] = useState(false);
+  // const [paymentModalOpen, setPaymentModalOpen] = useState(false);
+  // const [consultationAmount] = useState(30);
 
-  useEffect(() => {
-    const link = document.createElement('link');
-    link.href = 'https://assets.calendly.com/assets/external/widget.css';
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
+  // useEffect(() => {
+  //   const link = document.createElement('link');
+  //   link.href = 'https://assets.calendly.com/assets/external/widget.css';
+  //   link.rel = 'stylesheet';
+  //   document.head.appendChild(link);
 
-    const script = document.createElement('script');
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    script.async = true;
-    script.onload = () => setCalendlyLoaded(true);
-    document.body.appendChild(script);
+  //   const script = document.createElement('script');
+  //   script.src = 'https://assets.calendly.com/assets/external/widget.js';
+  //   script.async = true;
+  //   script.onload = () => setCalendlyLoaded(true);
+  //   document.body.appendChild(script);
 
-    return () => {
-      // Cleanup
-      if (document.head.contains(link)) {
-        document.head.removeChild(link);
-      }
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
-  }, []);
+  //   return () => {
+  //     // Cleanup
+  //     if (document.head.contains(link)) {
+  //       document.head.removeChild(link);
+  //     }
+  //     if (document.body.contains(script)) {
+  //       document.body.removeChild(script);
+  //     }
+  //   };
+  // }, []);
 
-  const handleCalendlyClick = (e) => {
-    e.preventDefault();
+  // const handleCalendlyClick = (e) => {
+  //   e.preventDefault();
 
-    if (window.Calendly && calendlyLoaded) {
-      window.Calendly.initPopupWidget({
-        url: 'https://calendly.com/pershantparkash',
-        text: 'Schedule time with me',
-        color: '#3b82f6',
-        textColor: '#ffffff',
-        branding: true
-      });
-    } else {
-      // Fallback to opening in new tab if widget fails to load
-      window.open('https://calendly.com/pershantparkash', '_blank');
-    }
-  };
+  //   if (window.Calendly && calendlyLoaded) {
+  //     window.Calendly.initPopupWidget({
+  //       url: 'https://calendly.com/pershantparkash',
+  //       text: 'Schedule time with me',
+  //       color: '#3b82f6',
+  //       textColor: '#ffffff',
+  //       branding: true
+  //     });
+  //   } else {
+  //     // Fallback to opening in new tab if widget fails to load
+  //     window.open('https://calendly.com/pershantparkash', '_blank');
+  //   }
+  // };
 
-  const handleBookConsultation = () => {
-    setPaymentModalOpen(true);
-  };
+  // const handleBookConsultation = () => {
+  //   setPaymentModalOpen(true);
+  // };
 
-  const handlePaymentSuccess = () => {
-    handleCalendlyClick();
-  };
+  // const handlePaymentSuccess = () => {
+  //   handleCalendlyClick();
+  // };
 
   return (
     <Box

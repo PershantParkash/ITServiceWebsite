@@ -139,8 +139,8 @@ export default function Header() {
 
   const navItems = [
     { label: 'Home', href: '#hero' },
-    { label: 'Services', href: '#services' },
     { label: 'About', href: '#about' },
+    { label: 'Services', href: '#services' },
     { label: 'Contact', href: '#contact' }
     
   ];
@@ -184,7 +184,7 @@ export default function Header() {
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <Box>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-              <Box sx={{
+              {/* <Box sx={{
                 padding:"8px",
                 borderRadius: '10px',
                 background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
@@ -203,7 +203,18 @@ export default function Header() {
                 >
                   WIZ
                 </Typography>
-              </Box>
+              </Box> */}
+                <img
+                    src="/Logo2.png"
+                    alt="Logo"
+                    style={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: '10px',
+                      objectFit: 'cover',
+                      display: 'block',
+                    }}
+                  />
               <Box>
                 <Typography 
                   variant="h6" 
@@ -554,7 +565,7 @@ export default function Header() {
               <Box sx={{ display: 'flex', alignItems: 'center',
                gap: 2
                 }}>
-                <Box sx={{
+                {/* <Box sx={{
                   // width: 40,
                   // height: 40,
                   padding:"8px",
@@ -575,9 +586,9 @@ export default function Header() {
                   >
                     WeekendItWiz
                   </Typography>
-                </Box>
-                 {/* <img
-                    src="/logo.png"
+                </Box> */}
+                 <img
+                    src="/Logo2.png"
                     alt="Logo"
                     style={{
                       width: 40,
@@ -586,8 +597,8 @@ export default function Header() {
                       objectFit: 'cover',
                       display: 'block',
                     }}
-                  /> */}
-                {/* <Typography 
+                  />
+                <Typography 
                   variant="h6" 
                   component="h1" 
                   sx={{ 
@@ -599,7 +610,7 @@ export default function Header() {
                   }}
                 >
                   WeekendItWiz
-                </Typography> */}
+                </Typography>
               </Box>
 
               {/* Desktop Navigation */}
