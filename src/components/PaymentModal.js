@@ -42,7 +42,8 @@ export default function PaymentModal({
           amount: planDetails.price,
           planName: planDetails.name,
           duration: planDetails.duration,
-          success_url: `${window.location.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+          plan: planDetails.price === 0 ? 'free' : planDetails.price === 50 ? '30min' : planDetails.price === 75 ? '60min' : '',
+          success_url: `${window.location.origin}/success?plan=${planDetails.price === 0 ? 'free' : planDetails.price === 50 ? '30min' : planDetails.price === 75 ? '60min' : ''}&session_id={CHECKOUT_SESSION_ID}`,
           cancel_url: `${window.location.origin}/cancel`,
         }),
       });

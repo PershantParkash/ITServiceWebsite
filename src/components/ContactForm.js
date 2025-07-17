@@ -9,51 +9,51 @@ export default function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
-  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
-  const [consultationAmount] = useState(30);
+  // const [paymentModalOpen, setPaymentModalOpen] = useState(false);
+  // const [consultationAmount] = useState(30);
 
-  useEffect(() => {
-    const link = document.createElement('link');
-    link.href = 'https://assets.calendly.com/assets/external/widget.css';
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
+  // useEffect(() => {
+  //   const link = document.createElement('link');
+  //   link.href = 'https://assets.calendly.com/assets/external/widget.css';
+  //   link.rel = 'stylesheet';
+  //   document.head.appendChild(link);
 
-    const script = document.createElement('script');
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    script.async = true;
-    document.body.appendChild(script);
+  //   const script = document.createElement('script');
+  //   script.src = 'https://assets.calendly.com/assets/external/widget.js';
+  //   script.async = true;
+  //   document.body.appendChild(script);
 
-    return () => {
-      document.head.removeChild(link);
-      document.body.removeChild(script);
-    };
-  }, []);
+  //   return () => {
+  //     document.head.removeChild(link);
+  //     document.body.removeChild(script);
+  //   };
+  // }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleCalendlyClick = () => {
-    if (window.Calendly) {
-      window.Calendly.initPopupWidget({
-        url: 'https://calendly.com/pershantparkash',
-        text: 'Schedule time with me',
-        color: '#8b5cf6',
-        textColor: '#ffffff',
-        branding: true
-      });
-    } else {
-      window.open('https://calendly.com/pershantparkash', '_blank');
-    }
-  };
+  // const handleCalendlyClick = () => {
+  //   if (window.Calendly) {
+  //     window.Calendly.initPopupWidget({
+  //       url: 'https://calendly.com/pershantparkash',
+  //       text: 'Schedule time with me',
+  //       color: '#8b5cf6',
+  //       textColor: '#ffffff',
+  //       branding: true
+  //     });
+  //   } else {
+  //     window.open('https://calendly.com/pershantparkash', '_blank');
+  //   }
+  // };
 
-  const handleBookConsultation = () => {
-    setPaymentModalOpen(true);
-  };
+  // const handleBookConsultation = () => {
+  //   setPaymentModalOpen(true);
+  // };
 
-  const handlePaymentSuccess = () => {
-    handleCalendlyClick();
-  };
+  // const handlePaymentSuccess = () => {
+  //   handleCalendlyClick();
+  // };
 
   const contactInfo = [
     { icon: <LocationOn />, label: "Location", value: "20 Wenlock Road, London, England, N1 7GU" },
@@ -226,7 +226,7 @@ export default function ContactForm() {
               ))}
             </Box>
 
-            <Box sx={{
+            {/* <Box sx={{
               mt: 4,
               display: 'flex',
               justifyContent: 'center',
@@ -257,9 +257,9 @@ export default function ContactForm() {
                   transition: 'all 0.3s ease'
                 }}
               >
-                Book Consultation - £{consultationAmount}
+                Book Consultation - £50
               </Button>
-            </Box>
+            </Box> */}
           </Grid>
 
 
@@ -453,12 +453,12 @@ export default function ContactForm() {
 
 
 
-      <PaymentModal
+      {/* <PaymentModal
         open={paymentModalOpen}
         onClose={() => setPaymentModalOpen(false)}
         amount={consultationAmount}
         onSuccess={handlePaymentSuccess}
-      />
+      /> */}
     </Box>
   );
 }

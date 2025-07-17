@@ -93,10 +93,8 @@ export default function ConsultationPricingComponent() {
 
     const handleBookConsultation = (plan) => {
         if (plan.price === 0) {
-            // Handle free consultation booking (maybe redirect to calendar)
-            console.log('Booking free consultation');
-            // You might want to redirect to a calendar booking page
-            // window.location.href = '/book-free-consultation';
+            // Redirect to 15-minute Calendly booking for free consultation
+            window.open('https://calendly.com/pershantparkash/15-minute-meeting?month=2025-07', '_blank');
         } else {
             // Open payment modal for paid consultations
             setSelectedPlan(plan);

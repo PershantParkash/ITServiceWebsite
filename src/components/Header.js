@@ -142,6 +142,7 @@ export default function Header() {
     { label: 'Services', href: '#services' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' }
+    
   ];
 
   const highlights = [
@@ -618,9 +619,9 @@ export default function Header() {
               <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2 }}>
                 <Button
                   variant="contained"
-                  onClick={handleCalendlyClick}
+                  // onClick={handleCalendlyClick}
                   //  onClick={handleBookConsultation}
-              // onClick={() => handleSmoothScroll("#pricing")}
+              onClick={() => handleSmoothScroll("pricing")}
                   sx={{ 
                     px: 3, 
                     py: 1,

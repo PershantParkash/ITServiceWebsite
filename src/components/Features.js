@@ -242,6 +242,8 @@ export default function Features() {
                     right: 0,
                     height: '3px',
                     background: `linear-gradient(90deg, ${feature.color} 0%, transparent 100%)`,
+                    // opacity:0.85
+                    // background: `${feature.color}`,
                   },
                 }}
               >
@@ -346,7 +348,7 @@ export default function Features() {
                 fontSize: '0.9rem'
               }}
             >
-              Free consultation available
+              24/7 Availability
             </Typography>
           </Paper>
         </Box>
